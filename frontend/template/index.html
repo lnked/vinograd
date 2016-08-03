@@ -3,9 +3,38 @@
     "bodyclass": ""
 })
 
-@@include('./components/_svgstore.html')
+@@include('./popup/_feedback.html')
 
-@@include('./components/_demo.template')
+<div class="layout-wrapper">
+
+    @@include('./components/_header.html', {
+        "current": "index"
+    })
+    
+    @@include('./section/_slider.html')
+
+    <div class="layout-wrapper__inner">
+
+        @@include('./section/_location.html')
+
+        @@include('./section/_about.html')
+
+        @@include('./section/_plans.html')
+
+        @@include('./section/_rooms.html')
+
+        @@include('./section/_payment.html')
+
+        @@include('./section/_timeline.html')
+
+        @@include('./section/_documents.html')
+
+        @@include('./section/_contacts.html')
+
+    </div>
+
+</div>
+
+@@include('./components/_footer.html')
 
 @@include('./components/_scripts.html')
-

@@ -1,0 +1,13 @@
+.page-line {
+    clear: both;
+    margin-bottom: 59px;
+    border-bottom: 1px dashed #a3a3a3;
+
+    &._push {
+        margin-bottom: 30px;
+    }
+
+    &._nm {
+        margin-bottom: 0;
+    }
+}

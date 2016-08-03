@@ -1,0 +1,10 @@
+.timeline {
+    clear: both;
+    padding: 85px 0 65px;
+    background: #3e9150 url(/images/timeline.jpg) 50% 50% no-repeat;
+    background-size: cover;
+
+    &__carousel {
+        clear: both;
+    }
+}

@@ -1,0 +1,93 @@
+<template id="tmpl-popup-feedback">
+    <div class="popup" id="popup-feedback">
+        <div class="popup__overlay"></div>
+        <div class="popup__dialog">
+            <section class="popup__content _feedback">
+                <b class="popup__close js-popup-close"></b>
+                <article class="popup__body">
+                    
+                    <form action="" method="post" class="form">
+                        <div class="form__ln">
+                            <input name="name" placeholder="ФИО" class="c-input">
+                        </div>
+                        
+                        <div class="form__ln">
+                            <input name="phone" placeholder="Телефон" class="c-input j-phone-mask">
+                        </div>
+                        
+                        <div class="form__ln">
+                            <textarea name="q" placeholder="Ваш вопрос" class="c-textarea"></textarea>
+                        </div>
+
+                        <div class="form__button">
+                            <button type="submit" class="button button_submit button_green">ОТПРАВИТЬ</button>
+                        </div>
+                    </form>
+
+                </article>
+            </section>
+        </div>
+    </div>
+</template>
+
+<template id="tmpl-popup-layout">
+    <div class="popup" id="popup-layout">
+        <div class="popup__overlay"></div>
+        <div class="popup__dialog">
+            <section class="popup__content _layout">
+                <b class="popup__close js-popup-close _layout"></b>
+                <article class="popup__body _layout">
+                    
+                    <div class="popup__layout">
+
+                        {{#title}}
+                            <div class="page-header"><span class="page-header__title _small">{{title}}</span></div>
+                        {{/title}}
+
+                        {{#image}}
+                            <img src="{{image}}" width="120%" class="popup__layout__image" alt="">
+                        {{/image}}
+
+                    </div>
+    
+                </article>
+            </section>
+        </div>
+    </div>
+</template>
+
+<template id="tmpl-popup-message">
+    <div class="popup popup_simple popup_message" id="popup_message">
+        <b class="popup__close popup__close_simple js-popup-close"></b>
+
+        {{#title}}
+        <header class="popup__header popup__header_simple">
+            {{title}}
+        </header>
+        {{/title}}
+
+        {{#text}}
+        <div class="popup__message clearfix">
+            {{text}}
+        </div>
+        {{/text}}
+    </div>
+</template>
+
+<template id="tmpl-popup-error">
+    <div class="popup popup_simple popup_error" id="popup_error">
+        <b class="popup__close popup__close_simple js-popup-close"></b>
+
+        {{#title}}
+        <header class="popup__header popup__header_simple">
+            {{title}}
+        </header>
+        {{/title}}
+
+        {{#text}}
+        <div class="popup__message clearfix">
+            {{text}}
+        </div>
+        {{/text}}
+    </div>
+</template>

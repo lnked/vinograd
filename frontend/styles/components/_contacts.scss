@@ -1,0 +1,54 @@
+.contacts {
+    clear: both;
+    margin-bottom: 35px;
+
+    &__col {
+        clear: both;
+        font-size: 0;
+        margin-bottom: 25px;
+
+        &__item {
+            width: 27%;
+            color: #2d2d2d;
+            display: inline-block;
+            vertical-align: top;
+
+            &._center {
+                width: 46%;
+                text-align: center;
+            }
+
+            &__label {
+                font-size: 1.8rem;
+                font-weight: 400;
+                line-height: 1;
+                margin-bottom: 5px;
+                font-family: $font-narrow;
+            }
+            
+            &__worktime {
+                font-size: 1.6rem;
+                line-height: 1;
+                font-weight: 700;
+            }
+
+            &__phone {
+                font-size: 3rem;
+                line-height: 1;
+                font-weight: 700;
+            }
+
+            &__email {
+                color: #1d6c31;
+                font-size: 1.6rem;
+                font-weight: 700;
+                line-height: 1;
+
+                a {
+                    color: #1d6c31;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

@@ -1,16 +1,47 @@
 .layout-header {
     clear: both;
-    position: relative;
     height: $header-height;
+    background-color: #fff;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    top: 0;
+    
+    &_similar {
+        height: $header-height;
+    }
 
     &__wrapper {
         @extend %layout;
+        position: relative;
+        z-index: 100;
+    }
+
+    &__navigation {
+        position: absolute;
+        left: 194px;
+        top: 52px;
+        z-index: 100;
+        display: block;
     }
 
     &__logo {
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 10px;
+        top: 10px;
+    }
+
+    &__phone {
+        color: #2d2d2d;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+        font-family: $font-narrow;
+        text-decoration: none;
+        position: absolute;
+        right: 10px;
+        top: 48px;
     }
 }
 

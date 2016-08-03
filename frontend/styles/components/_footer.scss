@@ -3,19 +3,60 @@
     position: relative;
     height: $footer-height;
     margin-top: -$footer-height;
+    background-color: #fff;
     
     &__wrapper {
         @extend %layout;
     }
 
-    &__copiright {}
+    &__copiright {
+        color: #3b3b3b;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: $footer-height;
+        position: absolute;
+        left: 10px;
+        top: 0;
+    }
 
-    &__navigation {
-        &__list {}
-        &__item {
-            &__link {}
+    &__logo {
+        position: absolute;
+        right: 10px;
+        top: 25px;
+
+        &__src {
+            width: 139px;
+            height: 32px;
+            background: url(/images/region-logo.png) 50% 50% no-repeat;
+            background-size: 139px 32px;
+            display: inline-block;
+            vertical-align: middle;
         }
     }
+
+    &__studio {
+        position: absolute;
+        bottom: 25px;
+        right: 10px;
+        font-size: 1.4rem;
+    
+        &__desc {
+            color: #3b3b3b;
+            text-decoration: none;
+        }
+
+        &__link {
+            color: #9661A8;
+            font-weight: 700;
+        }
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (-moz-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min-device-pixel-ratio:1.5) {
+    .layout-footer__logo__src {
+        background-image: url(/images/region-logo@2x.png);
+    }
+    
 }
 
 @media only screen and (max-width: 1280px) {}

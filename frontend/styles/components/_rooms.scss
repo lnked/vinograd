@@ -1,0 +1,83 @@
+.rooms {
+    clear: both;
+    background: #197b30 url(/images/rooms.jpg) 50% 50% no-repeat;
+    background-size: cover;
+
+    &__header {
+        position: relative;
+        z-index: 10;
+        background-color: #fff;
+    }
+    
+    &__wrapper {
+        padding: 90px 0;
+    }
+
+    &__overlay {
+        padding: 50px;
+        position: relative;
+
+        &:before {
+            width: 100%;
+            height: 100%;
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 0;
+            opacity: 0.9;
+            border-radius: 6px;
+            background-color: #fff;
+        }
+
+        &__content {
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    &__col {
+        clear: both;
+        font-size: 0;
+
+        &:not(:last-child) {
+            margin-bottom: 28px;
+        }
+
+        &__item {
+            width: 50%;
+            float: left;
+            padding: 0 20px;
+            
+            &__picture {
+                width: 100px;
+                float: left;
+                margin-right: -100px;
+
+                &__src {
+                    display: inline-block;
+                    vertical-align: top;
+                }
+            }
+
+            &__content {
+                width: 100%;
+                float: left;
+                padding-left: 100px;
+
+                p {
+                    color: #2d2d2d;
+                    font-size: 1.6rem;
+                    line-height: 1.3;
+                    font-weight: 400;
+
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

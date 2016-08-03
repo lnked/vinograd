@@ -4,8 +4,34 @@
     overflow: hidden;
 
     &__inner {
-        @extend %layout;
+        padding-top: 25px;
         padding-bottom: $footer-height + $footer-margin;
+    }
+
+    &__content {
+        @extend %layout;
+
+        &._push {
+            padding-top: 30px;
+            padding-bottom: 55px;
+        }
+
+        &._payment {
+            padding-top: 50px;
+            padding-bottom: 55px;
+        }
+
+        &._plans {
+            padding-top: 50px;
+        }
+
+        &._documents {
+            padding-top: 90px;
+        }
+
+        &._contacts {
+            padding-top: 50px;
+        }
     }
 }
 

@@ -1,0 +1,30 @@
+.banks {
+    clear: both;
+    font-size: 0;
+    margin-bottom: 20px;
+
+    &__item {
+        width: 33%;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+
+        &__logo {
+            line-height: 78px;
+            margin-bottom: 10px;
+        }
+
+        &__src {
+            max-width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        &__content {
+            padding: 0 20px;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+    }
+}

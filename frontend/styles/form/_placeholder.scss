@@ -1,0 +1,19 @@
+input, textarea {
+    &:placeholder {
+        color: $c-placeholder-color;
+        color: #f00;
+        opacity: $c-placeholder-opacity;
+        transition: opacity $a-time ease;
+    }
+    
+    &:focus {
+        &:placeholder {
+            color: transparent;
+            opacity: 0;
+        }
+    }
+
+    &:placeholder, &[placeholder] {
+        text-overflow: ellipsis;
+    }
+}

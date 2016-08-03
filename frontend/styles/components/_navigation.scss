@@ -1,0 +1,36 @@
+.navigation {
+    font-size: 0;
+    line-height: 1;
+
+    &__item {
+        display: inline-block;
+        vertical-align: top;
+
+        &:not(:last-child) {
+            margin-right: 18px;
+        }
+    }
+
+    &__link {
+        color: #515151;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1;
+        font-family: $font-narrow;
+        text-decoration: none;
+        border-bottom: 2px solid #fff;
+        transition: color $a-time, border-color $a-time;
+
+        &.current {
+            color: #60a972;
+            border-color: #60a972;
+        }
+    }
+
+    &.is-disabled {
+        .navigation__link.current {
+            color: #515151;
+            border-color: #fff;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+.page-button {
+    clear: both;
+    text-align: center;
+    margin-bottom: 15px;
+
+    &__title {
+        color: #2d2d2d;
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 10px;
+    }
+
+    &._up, &._down {
+        margin-bottom: 51px;
+        padding-bottom: 28px;
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+
+        .button__text_up,
+        .button__text_down {
+            display: none;
+        }
+    }
+
+    &._up {
+        background-image: url(/images/arrow-up.png);
+
+        .button__text_up {
+            display: block;
+        }
+    }
+
+    &._down {
+        background-image: url(/images/arrow-down.png);
+
+        .button__text_down {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+._fh, ._fb {
+    position: relative;
+
+    &:before, &:after {
+        width: 100%;
+        height: 50px;
+        content: "";
+        z-index: 10;
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: block;
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+    }
+
+    &:before {
+        top: 100%;
+    }
+
+    &:after {
+        bottom: 0;
+    }
+}
+
+._fh {
+    &:before {
+        background-image: url(/images/fh.png);
+    }
+}
+
+._fb {
+    &:after {
+        background-image: url(/images/fb.png);
+    }
+}
