@@ -38,13 +38,13 @@ textarea {
     border: 1px solid $c-border-color;
     box-sizing: border-box !important;
     background-color: #fff;
+    transition: border-color $a-time, color $a-time;
 
     &.error {
-        background: rgba(255, 0, 0, 0.1);
-        border-color: rgb(255, 0, 0);
-        border-color: rgba(255, 0, 0, 0.5);
+        color: #ff5335;
+        border-color: #ff5335;
     }
-    
+
     &:disabled {
         opacity: 0.4;
         cursor: default;

@@ -39,7 +39,19 @@
 @media only screen and (max-width: 1140px) {}
 @media only screen and (max-width: 1024px) {}
 @media only screen and (max-width: 960px) {}
-@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 768px) {
+    .layout-wrapper {
+        &__inner {
+            padding-bottom: $footer-margin;
+        }
+        
+        &__content {
+            &._documents {
+                padding-top: 50px;
+            }
+        }
+    }
+}
 @media only screen and (max-width: 568px) {}
 @media only screen and (max-width: 480px) {}
 @media only screen and (max-width: 375px) {}

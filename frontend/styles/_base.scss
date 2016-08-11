@@ -26,12 +26,8 @@ body {
 }
 
 body, input, textarea, select, button {
-    font-synthesis: none;
-    text-rendering: optimizeLegibility; //auto | optimizeSpeed | optimizeLegibility | geometricPrecision
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-smoothing: antialiased;
-    -moz-font-feature-settings: 'liga', 'kern';
-    direction: ltr;
+    font-synthesis: none;
     text-align: left;
 }

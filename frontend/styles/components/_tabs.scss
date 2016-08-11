@@ -2,6 +2,57 @@
     clear: both;
     font-size: 0;
     margin-bottom: 30px;
+    position: relative;
+    
+    &__cover {
+        position: relative;
+    }
+
+    &__trigger {
+        width: 100%;
+        height: 44px;
+        display: none;
+        cursor: pointer;
+        position: relative;
+        border-radius: 2px;
+        background-color: #197b30;
+
+        &__hamburger {
+            width: 100%;
+            max-width: 36px;
+            height: 2px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -18px;
+            margin-top: -1px;
+            display: block;
+            font-size: 0;
+            user-select: none;
+            -webkit-touch-callout: none;
+            background-color: #fff;
+            transition: background-color $a-time;
+
+            &:before,
+            &:after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                background-color: #fff;
+                transition: transform $a-time, background-color $a-time;
+            }
+
+            &:before {
+                transform: translateY(-8px);
+            }
+
+            &:after {
+                transform: translateY(8px);
+            }
+        }
+    }
 
     &._stuck {
         margin-bottom: -1px;
@@ -131,3 +182,132 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .tabs {
+        width: 100%;
+        margin-bottom: 0;
+
+        &__cover {
+            margin-bottom: 25px;
+        }
+
+        &__trigger {
+            display: block;
+        }
+    
+        &__content {
+            width: 100%;
+            display: none;
+            max-width: 100%;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            right: 0;
+            margin-top: 10px;
+            opacity: 0;
+            z-index: 100;
+            background-color: #197b30;
+            transform: translate3d(0, -20px, 0);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+            transition: transform $a-time, opacity $a-time;
+            
+            &.active {
+                display: block;
+            }
+
+            &.animate {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: -5px;
+                margin-left: -10px;
+                border-bottom: 5px solid #197b30;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+            }
+
+            .tabs__item {
+                &__link {
+                    color: #fff;
+                    border-color: #fff;
+
+                    &.current {
+                        color: #197b30;
+                        background-color: #fff;
+                    }
+                }
+
+                &:first-child .tabs__item__link {
+                    border-top: 0;
+                }
+
+                &:last-child .tabs__item__link {
+                    border-bottom: 0;
+                }
+            }
+        }
+
+        &__item {
+            clear: both;
+            display: block;
+            margin-top: -1px;
+
+            &:not(:first-child) {
+                padding-left: 0;
+            }
+
+            &:not(:last-child) {
+                padding-right: 0;
+            }
+
+            &._w25, &._tripple  {
+                width: 100%;
+            }
+            
+            &._smaller {
+                width: 100%;
+                float: none;
+                margin-right: 0;
+            }
+
+            &._longer {
+                float: none;
+
+                &, &:not(:first-child) {
+                    padding-left: 0;
+                }
+            }
+
+            &__link {
+                padding: 0;
+                border-left: 0;
+                border-right: 0;
+            }
+        }
+    }
+
+    .tabs-content {
+        margin: 0;
+
+        h3 {
+            text-align: center;
+        }
+
+        &__item {
+            p {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 568px) {}
+@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 375px) {}
+@media only screen and (max-width: 320px) {}

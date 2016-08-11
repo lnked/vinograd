@@ -5,18 +5,18 @@
             <section class="popup__content _feedback">
                 <b class="popup__close js-popup-close"></b>
                 <article class="popup__body">
-                    
-                    <form action="" method="post" class="form">
+
+                    <form action="/ajax/sendmessage" method="post" class="form form-ajax form-reset">
                         <div class="form__ln">
                             <input name="name" placeholder="ФИО" class="c-input">
                         </div>
-                        
+
                         <div class="form__ln">
                             <input name="phone" placeholder="Телефон" class="c-input j-phone-mask">
                         </div>
-                        
+
                         <div class="form__ln">
-                            <textarea name="q" placeholder="Ваш вопрос" class="c-textarea"></textarea>
+                            <textarea name="message" placeholder="Ваш вопрос" class="c-textarea"></textarea>
                         </div>
 
                         <div class="form__button">
@@ -37,7 +37,7 @@
             <section class="popup__content _layout">
                 <b class="popup__close js-popup-close _layout"></b>
                 <article class="popup__body _layout">
-                    
+
                     <div class="popup__layout">
 
                         {{#title}}
@@ -45,11 +45,11 @@
                         {{/title}}
 
                         {{#image}}
-                            <img src="{{image}}" width="120%" class="popup__layout__image" alt="">
+                            <img src="{{image}}" width="80%" class="popup__layout__image" alt="">
                         {{/image}}
 
                     </div>
-    
+
                 </article>
             </section>
         </div>
@@ -58,36 +58,56 @@
 
 <template id="tmpl-popup-message">
     <div class="popup popup_simple popup_message" id="popup_message">
-        <b class="popup__close popup__close_simple js-popup-close"></b>
+        <div class="popup__overlay"></div>
+        <div class="popup__dialog">
+            <section class="popup__content _message">
+                <b class="popup__close js-popup-close"></b>
+                <article class="popup__body _layout">
 
-        {{#title}}
-        <header class="popup__header popup__header_simple">
-            {{title}}
-        </header>
-        {{/title}}
+                    <div class="popup__layout">
 
-        {{#text}}
-        <div class="popup__message clearfix">
-            {{text}}
+                        {{#title}}
+                            <div class="page-header"><span class="page-header__title _small">{{title}}</span></div>
+                        {{/title}}
+
+                        {{#text}}
+                        <div class="popup__message _success clearfix">
+                            {{text}}
+                        </div>
+                        {{/text}}
+
+                    </div>
+
+                </article>
+            </section>
         </div>
-        {{/text}}
     </div>
 </template>
 
 <template id="tmpl-popup-error">
     <div class="popup popup_simple popup_error" id="popup_error">
-        <b class="popup__close popup__close_simple js-popup-close"></b>
+        <div class="popup__overlay"></div>
+        <div class="popup__dialog">
+            <section class="popup__content _message">
+                <b class="popup__close js-popup-close"></b>
+                <article class="popup__body _layout">
 
-        {{#title}}
-        <header class="popup__header popup__header_simple">
-            {{title}}
-        </header>
-        {{/title}}
+                    <div class="popup__layout">
 
-        {{#text}}
-        <div class="popup__message clearfix">
-            {{text}}
+                        {{#title}}
+                            <div class="page-header"><span class="page-header__title _small">{{title}}</span></div>
+                        {{/title}}
+
+                        {{#text}}
+                        <div class="popup__message _error clearfix">
+                            {{text}}
+                        </div>
+                        {{/text}}
+
+                    </div>
+
+                </article>
+            </section>
         </div>
-        {{/text}}
     </div>
 </template>

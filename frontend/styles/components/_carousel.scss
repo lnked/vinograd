@@ -1,10 +1,8 @@
 .carousel {
     font-size: 0;
-    height: 165px;
     position: relative;
 
     &__wrapper {
-        height: 165px;
         margin: 0 -10px;
         overflow: hidden;
     }
@@ -42,7 +40,7 @@
     &__item {
         float: left;
         outline: none;
-        height: 165px;
+        min-height: 165px;
         padding: 0 10px;
 
         &__image {
@@ -60,6 +58,47 @@
         }
     }
 }
+
+@media only screen and (max-width: 1280px) {}
+@media only screen and (max-width: 1140px) {}
+@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 960px) {}
+@media only screen and (max-width: 768px) {
+    .carousel {
+        &__item {
+            &__image {
+                &__src {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 568px) {
+    .carousel {
+        &__item {
+            &__image {
+                padding: 6px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {}
+
+@media only screen and (max-width: 375px) {
+    .carousel {
+        &__item {
+            &__image {
+                &__src {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 320px) {}
 
 @media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (-moz-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min-device-pixel-ratio:1.5) {
     .carousel {

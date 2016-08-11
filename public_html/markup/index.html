@@ -1,10 +1,12 @@
+ 
 <!DOCTYPE html>
 <!-- (c) lnk. celebro | http://www.celebro.ru/ -->
 <html lang="ru" class="no-js" itemscope="itemscope" xmlns="http://www.w3.org/1999/xhtml" itemtype="http://schema.org/WebPage">
-<head> 
+
+<head>
     <link rel="stylesheet" href="../css/main.min.css">
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    
+
     <meta charset="UTF-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -30,1131 +32,1350 @@
         <meta http-equiv="imagetoolbar" content="false">
     <![endif]-->
 
-    <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
-    <title itemprop="name">Index</title>
+    <script>
+        (function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);
+    </script>
+
+    <meta name="keywords" content="ЖК Виноградъ, квартиры в Краснодаре, квартиры в Новой Адыгее,  недвижимость, купить недвижимость, недвижимость в Краснодаре,  недвижимость Новая Адыгея, купить квартиру, купить студию в Краснодаре, новостройки, приобрести жилье, инвестиции в недвижимость, купить квартиру в Краснодаре, купить квартиру в тихом районе города, квартира с предчистовой отделкой, квартира под ключ, квартира в тихом районе, дом, купить жилье, квартира в Прикубанском округе."
+    />
+    <meta name="description" content="ЖК " Виноградъ " в районе ТЦ “МЕГА-АДЫГЕЯ“ - динамично развивающийся, перспективный район! Всего 5 минут езды до центра города Краснодар." />
+    <title itemprop="name">ЖК &quot;ВиноградЪ&quot; - продажа квартир в Новой Адыгее от застройщика</title>
 </head>
+
 <body>
 
-<template id="tmpl-popup-feedback">
-    <div class="popup" id="popup-feedback">
-        <div class="popup__overlay"></div>
-        <div class="popup__dialog">
-            <section class="popup__content _feedback">
-                <b class="popup__close js-popup-close"></b>
-                <article class="popup__body">
-                    
-                    <form action="" method="post" class="form">
-                        <div class="form__ln">
-                            <input name="name" placeholder="ФИО" class="c-input">
-                        </div>
-                        
-                        <div class="form__ln">
-                            <input name="phone" placeholder="Телефон" class="c-input j-phone-mask">
-                        </div>
-                        
-                        <div class="form__ln">
-                            <textarea name="q" placeholder="Ваш вопрос" class="c-textarea"></textarea>
+    <template id="tmpl-popup-feedback">
+        <div class="popup" id="popup-feedback">
+            <div class="popup__overlay"></div>
+            <div class="popup__dialog">
+                <section class="popup__content _feedback">
+                    <b class="popup__close js-popup-close"></b>
+                    <article class="popup__body">
+
+                        <form action="/ajax/sendmessage" method="post" class="form form-ajax form-reset">
+                            <div class="form__ln">
+                                <input name="name" placeholder="ФИО" class="c-input">
+                            </div>
+
+                            <div class="form__ln">
+                                <input name="phone" placeholder="Телефон" class="c-input j-phone-mask">
+                            </div>
+
+                            <div class="form__ln">
+                                <textarea name="message" placeholder="Ваш вопрос" class="c-textarea"></textarea>
+                            </div>
+
+                            <div class="form__button">
+                                <button type="submit" class="button button_submit button_green">ОТПРАВИТЬ</button>
+                            </div>
+                        </form>
+
+                    </article>
+                </section>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-popup-layout">
+        <div class="popup" id="popup-layout">
+            <div class="popup__overlay"></div>
+            <div class="popup__dialog">
+                <section class="popup__content _layout">
+                    <b class="popup__close js-popup-close _layout"></b>
+                    <article class="popup__body _layout">
+
+                        <div class="popup__layout">
+
+                            {{#title}}
+                            <div class="page-header">
+                                <span class="page-header__title _small">{{title}}</span>
+                            </div>
+                            {{/title}} {{#image}}
+                            <img src="{{image}}" width="80%" class="popup__layout__image" alt="">{{/image}}
+
                         </div>
 
-                        <div class="form__button">
-                            <button type="submit" class="button button_submit button_green">ОТПРАВИТЬ</button>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-popup-message">
+        <div class="popup popup_simple popup_message" id="popup_message">
+            <div class="popup__overlay"></div>
+            <div class="popup__dialog">
+                <section class="popup__content _message">
+                    <b class="popup__close js-popup-close"></b>
+                    <article class="popup__body _layout">
+
+                        <div class="popup__layout">
+
+                            {{#title}}
+                            <div class="page-header">
+                                <span class="page-header__title _small">{{title}}</span>
+                            </div>
+                            {{/title}} {{#text}}
+                            <div class="popup__message _success clearfix">
+                                {{text}}
+                            </div>
+                            {{/text}}
+
+                        </div>
+
+                    </article>
+                </section>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-popup-error">
+        <div class="popup popup_simple popup_error" id="popup_error">
+            <div class="popup__overlay"></div>
+            <div class="popup__dialog">
+                <section class="popup__content _message">
+                    <b class="popup__close js-popup-close"></b>
+                    <article class="popup__body _layout">
+
+                        <div class="popup__layout">
+
+                            {{#title}}
+                            <div class="page-header">
+                                <span class="page-header__title _small">{{title}}</span>
+                            </div>
+                            {{/title}} {{#text}}
+                            <div class="popup__message _error clearfix">
+                                {{text}}
+                            </div>
+                            {{/text}}
+
+                        </div>
+
+                    </article>
+                </section>
+            </div>
+        </div>
+    </template>
+
+    <div class="layout-wrapper">
+
+        <span class="sandwich js-sandwich-menu">
+            <span class="sandwich__layer">Menu</span>
+        </span>
+
+        <div class="menu-overlay" id="menu-overlay"></div>
+
+        <header class="layout-header _fh" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+            <div class="layout-header__wrapper">
+
+                <a href="#slider-section" class="layout-header__logo logo j-navigation"></a>
+
+                <span class="layout-header__phone">8 (928) 880-75-75</span>
+
+            </div>
+        </header>
+
+        <div class="layout-header_similar"></div>
+
+        <nav class="layout-header__navigation navigation" id="navigation" role="navigation">
+            <div class="navigation__wrapper">
+                <ul class="navigation__list">
+                    <li class="navigation__item">
+                        <a href="#about-section" class="navigation__link j-navigation current">О КОМПЛЕКСЕ</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#plans-section" class="navigation__link j-navigation">ПЛАНИРОВКИ И ЦЕНЫ</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#payment-section" class="navigation__link j-navigation">СПОСОБЫ ОПЛАТЫ</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#documents-section" class="navigation__link j-navigation">ДОКУМЕНТАЦИЯ</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#contacts-section" class="navigation__link j-navigation">КОНТАКТЫ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="slider _fb j-section clearfix" id="slider-anchor">
+            <b class="slider__navigation slider__navigation_prev j-slider-navigation" id="slider-prev" data-direction="prev"></b>
+            <b class="slider__navigation slider__navigation_next j-slider-navigation" id="slider-next" data-direction="next"></b>
+
+            <div class="slider__switcher">
+                <label for="swith-day" class="slider__switcher__item current">
+                    <span class="slider__switcher__item__m _day">ДЕНЬ</span>
+                </label>
+
+                <input type="radio" name="switch" value="night" id="swith-night" class="slider__switcher__radio j-switcher">
+
+                <span class="slider__switcher__background"></span>
+
+                <input type="radio" name="switch" value="day" id="swith-day" class="slider__switcher__radio j-switcher" checked>
+
+                <label for="swith-night" class="slider__switcher__item">
+                    <span class="slider__switcher__item__m _night">НОЧЬ</span>
+                </label>
+            </div>
+
+            <div class="slider__header">
+                <div class="slider__header__middle">
+                    <div class="slider__header__deadline">Сдача май 2017</div>
+                    <div class="slider__header__title">ЖК “ВИНОГРАДЪ”</div>
+                </div>
+            </div>
+
+            <div class="slider__content">
+                <div class="slider__content__checked">
+                    <span class="slider__content__checked__title">Квартиры комфорт класса от
+                        <strong class="rouble">624 000</strong>
+                    </span>
+                </div>
+                <div class="slider__content__checked">
+                    <span class="slider__content__checked__title">5 минут езды до центра Краснодара</span>
+                </div>
+            </div>
+
+            <div class="slider__groups clearfix" id="slider">
+
+                <div class="slider__groups__item j-slider-item _active" data-daytime="day">
+                    <div class="slider__groups__image j-slider-image _active">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/d0.jpg);"></div>
+                    </div>
+
+                    <div class="slider__groups__image j-slider-image">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/d1.jpg);"></div>
+                    </div>
+
+                    <div class="slider__groups__image j-slider-image">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/d2.jpg);"></div>
+                    </div>
+
+                    <div class="slider__groups__image j-slider-image">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/d3.jpg);"></div>
+                    </div>
+
+                    <div class="slider__groups__image j-slider-image">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/d4.jpg);"></div>
+                    </div>
+                </div>
+
+                <div class="slider__groups__item j-slider-item" data-daytime="night">
+                    <div class="slider__groups__image j-slider-image">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/n0.jpg);"></div>
+                    </div>
+
+                    <div class="slider__groups__image j-slider-image">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/n1.jpg);"></div>
+                    </div>
+
+                    <div class="slider__groups__image j-slider-image _active">
+                        <div class="slider__groups__image__src" style="background-image: url(/images/slider/n2.jpg);"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slider__form">
+                <form action="/ajax/recall" method="post" class="form _simple _darken form-ajax form-reset">
+                    <div class="form__title">Получите подробную консультацию у нашего специалиста</div>
+
+                    <div class="form__row clearfix">
+                        <div class="form__col _input">
+                            <input name="phone" placeholder="Телефон" class="c-input j-phone-mask">
+                        </div>
+
+                        <div class="form__col _button">
+                            <button type="submit" class="button button_green _wide">ЗАКАЗАТЬ ЗВОНОК</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="layout-wrapper__inner">
+
+            <div class="layout-wrapper__content clearfix">
+
+                <div class="page-header">
+                    <span class="page-header__title">Удобное местоположение</span>
+                </div>
+
+                <div class="page-subtitle">
+                    <p>Расположен в Краснодаре — в районе ТЦ “МЕГА-АДЫГЕЯ“</p>
+                    <p>
+                        <strong>Всего 5 минут езды до центра города Краснодар</strong>
+                    </p>
+                </div>
+
+                <div class="location clearfix">
+
+                    <div class="location__column _left">
+                        <div class="location__item _small _li-1">
+                            <div class="location__item__flag j-loc-flag" data-number="1">
+                                <img src="/images/location/dynamic.png" width="61" class="location__item__flag__src" alt="">
+                            </div>
+
+                            <div class="location__item__content _active">
+                                <p>
+                                    <strong>Динамично развивающийся, перспективный район,</strong>включающий весь торговый пассаж в радиусе трех километров: IKEA Family, “Мега-Адыгея", "АШАН", "Леруа - Мерлен", круглосуточный гипермаркет "METRO", Семейный Магнит,
+                                    рынок "Monarama",  и многие другие.</p>
+                            </div>
+                        </div>
+
+                        <div class="location__item _small _li-2">
+                            <div class="location__item__flag j-loc-flag" data-number="2">
+                                <img src="/images/location/time.png" width="61" class="location__item__flag__src" alt="">
+                            </div>
+
+                            <div class="location__item__content">
+                                <p>
+                                    <strong>Добраться без преувеличения до центра города Краснодара, без пробок можно всего за 5 минут.</strong>
+                                </p>
+                                <p>Маршрутки ходят здесь по расписанию одна за другой.</p>
+                            </div>
+                        </div>
+
+                        <div class="location__item _large _li-3">
+                            <div class="location__item__flag j-loc-flag" data-number="3">
+                                <img src="/images/location/leaf.png" width="61" class="location__item__flag__src" alt="">
+                            </div>
+
+                            <div class="location__item__content">
+                                <p>
+                                    <strong>Экологически чистый район.</strong>
+                                </p>
+                                <p>В непосредственной близости располагается река  Кубань и три озера, каждое из которых оборудовано всем необходимым для отдыха: рыбалка, беседки, мангалы, водные скутеры и лодки.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location__column _right">
+                        <div class="location__item _small _li-4">
+                            <div class="location__item__flag j-loc-flag" data-number="4">
+                                <img src="/images/location/pin.png" width="61" class="location__item__flag__src" alt="">
+                            </div>
+
+                            <div class="location__item__content">
+                                <p>
+                                    <strong>В 800 метрах от ЖК находится школа №19.</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="location__item _small _li-5">
+                            <div class="location__item__flag j-loc-flag" data-number="5">
+                                <img src="/images/location/play.png" width="61" class="location__item__flag__src" alt="">
+                            </div>
+
+                            <div class="location__item__content">
+                                <p>
+                                    <strong>Новая развлекательная инфраструктура</strong>в виде нового "Мега парка", аквапарка и дельфинария.</p>
+                            </div>
+                        </div>
+
+                        <div class="location__item _small _li-6">
+                            <div class="location__item__flag j-loc-flag" data-number="6">
+                                <img src="/images/location/map.png" width="61" class="location__item__flag__src" alt="">
+                            </div>
+
+                            <div class="location__item__content">
+                                <p>
+                                    <strong>Недалеко от жилого комплекса</strong>- три поликлиники, три детских сада и три школы.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location__map__mobile is-hidden" id="location-mobile">
+                        <b class="location__map__mobile__close j-close"></b>
+
+                        <div class="location__map__content j-content">
+                            <div class="location__map__content__text">
+                                <div class="location__map__content__middle j-content-middle">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location__map">
+                        <img src="/images/map.jpg" class="location__map__image" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="about _fb j-section" id="about-anchor">
+                <div class="about__header _fh">
+                    <div class="page-header">
+                        <span class="page-header__title">О КОМПЛЕКСЕ ЖК “ВИНОГРАДЪ”</span>
+                    </div>
+                    <div class="page-subtitle _nm">Сдача домов запланирована на май 2017 года</div>
+                </div>
+
+                <div class="about__wrapper">
+
+                    <div class="layout-wrapper__content clearfix">
+                        <div class="about__overlay">
+                            <div class="about__overlay__content">
+
+                                <div class="about__slider clearfix">
+                                    <div class="about__slider__wrapper j-slider">
+                                        <div class="about__slider__item slick-slide">
+                                            <div class="about__slider__content">
+                                                <h4>Жилой комплекс «ВиноградЪ»</h4>
+                                                <p>Это новый жилой квартал, располагающийся в экологически чистом районе, по адресу а. Новая Адыгея, уп. Бжегокайская 19, в 5 минутах езды от центра Краснодара.</p>
+                                                <p>
+                                                    <em>«Виноградъ» представляет собой комплекс из пяти трехэтажных монолитно-кирпичных домов класса «Комфорт», включает в себя всю необходимую внутреннюю инфраструктуру для комфортного проживания - детские
+                                                        и спортивные площадки, зоны отдыха для семейного досуга, наземные парковки, супермаркет, аптека, салон красоты, а также собственная управляющая компания.</em>
+                                                </p>
+                                            </div>
+
+                                            <div class="about__slider__push">
+                                                <div class="about__slider__image">
+                                                    <img src="/images/about-slide.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="about__slider__item slick-slide">
+                                            <div class="about__slider__content">
+                                                <p>
+                                                    <strong>Строительство и продажа в ЖК «ВиноградЪ»</strong>осуществляется по Федеральному закону РФ № 214 — ФЗ, что даёт возможность приобрести квартиру несколькими способами: наличные средства, рассрочка без
+                                                    %‚ ипотека, материнский капитал.</p>
+                                                <p>Данный комплекс отличается качеством строительства и удивительным разнообразием планировок: студии, однокомнатные и двухкомнатные квартиры, площадью от 20 до 62 кв. м. Коммерческие помещения, площадью от
+                                                    20 до 200 кв. м. для открытия собственного бизнеса.</p>
+                                            </div>
+
+                                            <div class="about__slider__push">
+                                                <div class="about__slider__image">
+                                                    <img src="/images/complex.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="about__slider__item slick-slide">
+                                            <div class="about__slider__content">
+                                                <h4>Инфраструктура района</h4>
+                                                <p>ЖК «ВиноградЪ» расположен в динамично развивающемся районе, где уже имеется вся необходимая инфраструктура: социальная, коммерческая и транспортная, На данной территории есть большие торговые центры (ТЦ
+                                                    кМега-Адыгея», ТЦ Мопатагпа, ЦОТ «Метро»)‚ автосалоны, радиорынок, салоны мебели («Стопппитхоумт Гипермаркет «Семейный Магнит, МТЦ «Пять звёзд», Тд «Лазурит», сУпермаркеты, аптеки, салоны красоты, Фитнес-центры,
+                                                    кафе и т д.</p>
+                                                <p>От ЖК «ВиноградЪ» добраться до центра города Краснодара можно всего за 5 минут. ЖК «ВиноградЪх располагается в 900 метрах от реки Кубань. В непосредственной близости находятся три озера, каждое из которых
+                                                    оборудовано всем необходимым для отдыха: рыбалка, беседки, мангалы, водные скутеры и лодки.</p>
+                                            </div>
+
+                                            <div class="about__slider__push">
+                                                <div class="about__slider__image">
+                                                    <img src="/images/infrastructure.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="about__slider__item slick-slide">
+                                            <div class="about__slider__content">
+                                                <h4>О застройщике РЕГИОН СТРОЙ</h4>
+                                                <p>Строительная компания «Регион Строй» ведет свою деятельность с 2012 года.
+                                                    <br>За это время «Регион Строй» построил и сдал в эксплуатацию более 30 000 квадратных метров жилой и коммерческой недвижимости.</p>
+                                                <p>В компании «РС» находятся профессиональные строители, которые возводят и реконструируют объекты недвижимости качественно, а значит надежно.
+                                                    <br>«Регион Строй» - одна из немногих строительных компаний, которые нарабатывают свой имидж качеством выполненных работ и большим количеством довольных хозяев квартир.</p>
+                                            </div>
+
+                                            <div class="about__slider__push">
+                                                <div class="about__slider__image">
+                                                    <img src="/images/region-stroy.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="about__comments clearfix">
+                            <div class="about__comments__content">
+                                <div class="about__comments__item">
+                                    <div class="about__comments__item__image">
+                                        <img src="/images/shield.png" class="about__comments__item__image__src" alt="">
+                                    </div>
+                                    <div class="about__comments__item__desc">
+                                        <div class="about__comments__item__desc__middle">
+                                            Строим по ФЗ 214
+                                            <br>Гарантия защиты ваших прав
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="about__comments__item">
+                                    <div class="about__comments__item__image">
+                                        <img src="/images/communication.png" class="about__comments__item__image__src" alt="">
+                                    </div>
+                                    <div class="about__comments__item__desc">
+                                        <div class="about__comments__item__desc__middle">
+                                            В квартирах центральные
+                                            <br>коммуникации
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="about__comments__item">
+                                    <div class="about__comments__item__image">
+                                        <img src="/images/strach.png" class="about__comments__item__image__src" alt="">
+                                    </div>
+                                    <div class="about__comments__item__desc">
+                                        <div class="about__comments__item__desc__middle">
+                                            Страхование гражданской
+                                            <br>ответственности застройщика
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="layout-wrapper__content _plans j-section clearfix" id="plans-anchor">
+                <div class="page-header">
+                    <span class="page-header__title">Планировки и цены</span>
+                </div>
+
+                <div class="tabs__cover j-tabs-cover">
+                    <div class="tabs__trigger j-tabs-trigger">
+                        <span class="tabs__trigger__hamburger"></span>
+                    </div>
+
+                    <div class="tabs__content j-tabs-content">
+                        <ul class="tabs j-tab-closest">
+                            <li class="tabs__item _tripple _group">
+                                <div class="tabs__item _smaller">
+                                    <a href="#.is-item" data-wrapper="plans" class="tabs__item__link j-tab _np current">Все</a>
+                                </div>
+
+                                <div class="tabs__item _longer">
+                                    <a href="#._studio" data-wrapper="plans" class="tabs__item__link j-tab">Студии от 624 000 Руб.</a>
+                                </div>
+                            </li>
+                            <li class="tabs__item _tripple">
+                                <a href="#._r1" data-wrapper="plans" class="tabs__item__link j-tab">1-комнатные квартиры от 997 000 Руб.</a>
+                            </li>
+                            <li class="tabs__item _tripple">
+                                <a href="#._r2" data-wrapper="plans" class="tabs__item__link j-tab">2 комнатные квартиры от 1 543 000 Руб.</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="plans clearfix" id="tab-plans">
+
+                    <!-- Студии -->
+
+                    <li class="plans__item is-item _studio is-show">
+                        <div class="plans__item__title">КВАРТИРА-СТУДИЯ</div>
+                        <a href="/images/plans/studio/1.jpg" title="КВАРТИРА-СТУДИЯ" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/studio/1.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>20,79 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _studio is-show">
+                        <div class="plans__item__title">КВАРТИРА-СТУДИЯ</div>
+                        <a href="/images/plans/studio/2.jpg" title="КВАРТИРА-СТУДИЯ" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/studio/2.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>24,76 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <!-- 1 комнатные -->
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/1.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/1.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>42,10 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/2.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/2.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>38,54 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/3.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/3.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>34,40 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/4.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/4.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>37,73 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/5.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/5.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>37,33 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/6.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/6.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>34,66 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/7.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/7.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>35,10 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/8.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/8.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>34,44 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/9.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/9.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>38,42 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/10.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/10.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>34,62 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/11.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/11.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>36,36 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/12.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/12.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>39,80 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/13.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/13.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>42,19 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r1 is-show">
+                        <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/1/14.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/1/14.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>34,38 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <!-- 2 комнатные -->
+
+                    <li class="plans__item is-item _r2 is-show">
+                        <div class="plans__item__title">2-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/2/1.jpg" title="2-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/2/1.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>62,26 кв.м.</p>
+                        </div>
+                    </li>
+
+                    <li class="plans__item is-item _r2 is-show">
+                        <div class="plans__item__title">2-КОМНАТНАЯ КВАРТИРА</div>
+                        <a href="/images/plans/2/2.jpg" title="2-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout">
+                            <img src="/images/plans/2/2.jpg" alt="" class="plans__item__layout__src">
+                        </a>
+                        <div class="plans__item__description">
+                            <p>
+                                <strong>Общая площадь:</strong>53,20 кв.м.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="page-header">
+                    <span class="page-header__title">ПЛАНИРОВОЧНЫЕ РЕШЕНИЯ</span>
+                </div>
+
+                <ul class="floors j-floors clearfix">
+                    <li class="floors__item">
+                        <div class="floors__item__content">
+                            <a href="/images/floors/1.jpg" onclick="return false" class="floors__item__link zoom"></a>
+                            <div class="floors__item__stage">ЭТАП 1.</div>
+                            <div class="floors__item__floor">ЭТАЖ 1.</div>
+                            <div class="floors__item__entrance">ПОДЪЕЗД 1.</div>
+                            <div class="floors__item__type">КОММЕРЧЕСКИЕ ПОМЕЩЕНИЯ</div>
+                        </div>
+                    </li>
+                    <li class="floors__item">
+                        <div class="floors__item__content">
+                            <a href="/images/floors/2.jpg" onclick="return false" class="floors__item__link zoom"></a>
+                            <div class="floors__item__stage">ЭТАП 1.</div>
+                            <div class="floors__item__floor">ТИПОВОЙ ЭТАЖ</div>
+                            <div class="floors__item__entrance">ПОДЪЕЗД 1.</div>
+                            <div class="floors__item__type">ЖИЛЫЕ ПОМЕЩЕНИЯ</div>
+                        </div>
+                    </li>
+                    <li class="floors__item">
+                        <div class="floors__item__content">
+                            <a href="/images/floors/3.jpg" onclick="return false" class="floors__item__link zoom"></a>
+                            <div class="floors__item__stage">ЭТАП 1.</div>
+                            <div class="floors__item__floor">ТИПОВОЙ ЭТАЖ</div>
+                            <div class="floors__item__entrance">ПОДЪЕЗД 2.</div>
+                            <div class="floors__item__type">ЖИЛЫЕ ПОМЕЩЕНИЯ</div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="rooms _fb">
+                <div class="rooms__header _fh">
+                    <div class="page-header">
+                        <span class="page-header__title">Современные и комфортные квартиры</span>
+                    </div>
+                </div>
+
+                <div class="rooms__wrapper">
+                    <div class="layout-wrapper__content clearfix">
+                        <div class="rooms__overlay">
+                            <div class="rooms__overlay__content">
+
+                                <div class="rooms__col clearfix">
+                                    <div class="rooms__col__item">
+                                        <div class="rooms__col__item__picture">
+                                            <img src="/images/wall.png" alt="" class="rooms__col__item__picture__src">
+                                        </div>
+
+                                        <div class="rooms__col__item__content">
+                                            <p>
+                                                <strong>Современная монолитно-кирпичная технология</strong>
+                                                <br>дорогостоящие, высококачественные строительные материалы, монолит, керамический забутовочный и облицовочный кирпич. Внешняя стена дома - 54см</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rooms__col__item">
+                                        <div class="rooms__col__item__picture">
+                                            <img src="/images/trees-outline.png" alt="" class="rooms__col__item__picture__src">
+                                        </div>
+
+                                        <div class="rooms__col__item__content">
+                                            <p>
+                                                <strong>Благоустройство и озеленение</strong>придомовой территории, современные детские, спортивные площадки.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rooms__col clearfix">
+                                    <div class="rooms__col__item">
+                                        <div class="rooms__col__item__picture">
+                                            <img src="/images/house-plan-scale.png" alt="" class="rooms__col__item__picture__src">
+                                        </div>
+
+                                        <div class="rooms__col__item__content">
+                                            <p>
+                                                <strong>Эрганомичные планировки</strong>
+                                                <br>от 20 до 62 кв. м</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rooms__col__item">
+                                        <div class="rooms__col__item__picture">
+                                            <img src="/images/buildings-near-the-sea-made-of-various-shapes.png" alt="" class="rooms__col__item__picture__src">
+                                        </div>
+
+                                        <div class="rooms__col__item__content">
+                                            <p>
+                                                <strong>Внутренняя инфраструктура на территории ЖК:</strong>
+                                                <br>собственная управляющая компания, аптека, минимаркет, салон красоты и т.д.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rooms__col clearfix">
+                                    <div class="rooms__col__item">
+                                        <div class="rooms__col__item__picture">
+                                            <img src="/images/roller-brush.png" alt="" class="rooms__col__item__picture__src">
+                                        </div>
+
+                                        <div class="rooms__col__item__content">
+                                            <p>
+                                                <strong>Предчистовая отделка:</strong>
+                                                <br>стены - гипсовая штукатурка, пол - стяжка, выводы под сантехнику, электророзетки, счетчики и радиаторы отопления с регулировкой температуры, металлопластиковые окна, металлическая входная дверь.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rooms__col__item">
+                                        <div class="rooms__col__item__picture">
+                                            <img src="/images/valve.png" alt="" class="rooms__col__item__picture__src">
+                                        </div>
+
+                                        <div class="rooms__col__item__content">
+                                            <p>
+                                                <strong>Центральные коммуникации</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-wrapper__content _payment j-section clearfix" id="payment-anchor">
+                <div class="page-header">
+                    <span class="page-header__title">Способы оплаты</span>
+                </div>
+                <div class="page-subtitle">Приобрести жилье можно несколькими способами</div>
+
+                <div class="tabs__cover j-tabs-cover">
+                    <div class="tabs__trigger j-tabs-trigger">
+                        <span class="tabs__trigger__hamburger"></span>
+                    </div>
+
+                    <div class="tabs__content j-tabs-content">
+                        <ul class="tabs j-tab-closest _stuck">
+                            <li class="tabs__item _w25">
+                                <a href="#._cash" data-wrapper="payment" class="tabs__item__link j-tab current">Наличные</a>
+                            </li>
+                            <li class="tabs__item _w25">
+                                <a href="#._installments" data-wrapper="payment" class="tabs__item__link j-tab">Рассрочка</a>
+                            </li>
+                            <li class="tabs__item _w25">
+                                <a href="#._mortgage" data-wrapper="payment" class="tabs__item__link j-tab">Ипотека</a>
+                            </li>
+                            <li class="tabs__item _w25">
+                                <a href="#._maternal-capital" data-wrapper="payment" class="tabs__item__link j-tab">Материнский капитал</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tabs-content" id="tab-payment">
+
+                    <div class="tabs-content__item is-item is-show _cash">
+                        <h3>ВЫ МОЖЕТЕ ОПЛАТИТЬ НАЛИЧНЫМИ</h3>
+                    </div>
+
+                    <div class="tabs-content__item is-item _installments">
+                        <h3>БЕСПРОЦЕНТНАЯ РАССРОЧКА В ЖК "ВИНОГРАДЪ"</h3>
+
+                        <p>Компания "Регион Строй предлагает удобные условия покупки жилья в ЖК "ВиноградЪ" - беспроцентная рассрочка на 6 месяцев и выплатой первоначального взноса 50% от стоимости квартиры. Клиент в праве самостоятельно выбрать время оплаты
+                            (ежемесячно/поквартально, дата, сумма).</p>
+                        <p>Договор обсуждается и заключается напрямую с застройщиком. Подготовленный договор долевого участия отправляется в Юстицию и уже после того, как он будет зарегистрирован, клиент оплачивает первоначальный взнос. Это необходимо для
+                            того, чтобы будущие жильцы были уверены в выполнении застройщиком всех юридических обязательств.</p>
+                    </div>
+
+                    <div class="tabs-content__item is-item _mortgage">
+                        <h3>ПЛЮСЫ ИПОТЕКИ:</h3>
+
+                        <ol>
+                            <li>Вы платите свои деньги за собственное жилье.</li>
+                            <li>Сумма ежемесячного платежа по кредиту часто меньше или соизмерима с арендной платой и не изменяется в течении срока ипотеки.</li>
+                            <li>Возможность получить квартиру сразу, а не копить на её покупку долгие годы.</li>
+                            <li>В некоторых случаях (покупка квартиры на этапе строительства) приобрести квартиру в кредит выгоднее, чем покупать её спустя время. Вы инвистируете.</li>
+                            <li>Предоставляются различные условия ипотечного кредитования для учителей, врачей, работников гос. сферы и силовых структур.</li>
+                            <li>Юридическая чистота сделки.</li>
+                        </ol>
+
+                        <p>Банки, с которыми сотрудничает наша компания ("Сбербанк", "ВТБ Банк Москвы") предлагает будущим жильцам ЖК "ВиноградЪ" фиксированную ставку по кредиту. А это значит, что вам не стоит бояться сумм ежемесячного платежа по кредиту
+                            - со временем они не будут увеличиваться. Скорее наоборот, с каждым годом выплачивать ипотеку будет легче, так как заработная плата имеет свойство повышаться, а ипотека остается таких же размеров, например, как пять лет назад,
+                            когда вы только её взяли.</p>
+                        <p>"Компания "Регион Строй" в сотрудничестве с ведущими банками страны "Сбербанк", "ВТБ Банк Москвы" поможет осуществить вашу заветную месту - приобрести собственное жилье. Купить квартиру в ЖК "ВиноградЪ" можно по средствам ипотечного
+                            кредитования на выгодных условиях".</p>
+
+                        <ul class="banks">
+                            <li class="banks__item">
+                                <div class="banks__item__logo">
+                                    <img src="/images/banks/center-invest.jpg" class="banks__item__src" alt="">
+                                </div>
+                                <div class="banks__item__content">
+                                    "Ипотека с гос. поддержкой"
+                                    <br>составляет 10,5 процентов годовых*.
+                                </div>
+                            </li>
+                            <li class="banks__item">
+                                <div class="banks__item__logo">
+                                    <img src="/images/banks/sberbank.jpg" class="banks__item__src" alt="">
+                                </div>
+                                <div class="banks__item__content">
+                                    Ипотека с гос.поддержкой
+                                    <br>под 11,9% годовых.*
+                                </div>
+                            </li>
+                            <li class="banks__item">
+                                <div class="banks__item__logo">
+                                    <img src="/images/banks/vtb-bm.jpg" class="banks__item__src" alt="">
+                                </div>
+                                <div class="banks__item__content">
+                                    "Ипотека с гос. поддержкой"
+                                    <br>фиксированная - 11,65%* годовых.
+                                </div>
+                            </li>
+                            <li class="banks__item">
+                                <div class="banks__item__logo">
+                                    <img src="/images/banks/globex.png" class="banks__item__src" alt="">
+                                </div>
+                                <div class="banks__item__content">
+                                    "Ипотека с гос. поддержкой" фиксированная - 11,7%* годовых.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tabs-content__item is-item _maternal-capital">
+                        <h3>ПОКУПКА КВАРТИРЫ ЗА МАТЕРИНСКИЙ КАПИТАЛ</h3>
+
+                        <p>
+                            <strong>Материнским капиталом можно воспользоваться двумя способами:</strong>
+                        </p>
+
+                        <ul>
+                            <li>Реализовать матреринский капитал с привлечением ипотечного кредита на жилье, если ребенок не достиг 3-х летнего возраста.</li>
+                            <li>Использовать материнский капитал (на 2015 год - 453026 руб.) для улучшения жилищных условий, на покупку квартиры в частности, после того, как ребенку исполнилось 3 года.</li>
+                        </ul>
+
+                        <p>
+                            <strong>Материнским капиталом можно распорядиться так:</strong>
+                        </p>
+
+                        <ul>
+                            <li>Приобрести квартиру за наличный расчет;</li>
+                            <li>Оплатить первый взнос ипотеки или по целевому займу;</li>
+                            <li>Стать участником долевого строительства.</li>
+                        </ul>
+
+                        <h3>НЕОБХОДИМЫЕ ДОКУМЕНТЫ ДЛЯ ПОЛУЧЕНИЯ МАТЕРИНСКОГО КАПИТАЛА</h3>
+
+                        <ul>
+                            <li>Паспорт</li>
+                            <li>Справка о наличие счета (пенсионное отделение)</li>
+                            <li>Сертификат (оригинал)</li>
+                        </ul>
+
+                        <p>Вы просто отдаете необходимые документы, все остальное за вас делает компания-застройщик.</p>
+                        <p>Либо вы можете самостоятельно отправиться в пенсионный фонд и распорядиться своими средствами.</p>
+                        <p>Деньги с материнского капитала поступят на счет компании застройщика в течении двух месяцев, но уже с момента подписания договора купленная квартира числится за клиентом.</p>
+                        <p>Материнский капитал - это отличная помощь молодым семьям при обустройстве собственного жилья.</p>
+                    </div>
+
+                    <div class="page-line _push"></div>
+
+                    <form action="/ajax/recall" method="post" class="form _simple _darken form-ajax form-reset">
+                        <div class="form__title">Получите подробную консультацию у нашего специалиста</div>
+
+                        <div class="form__row clearfix">
+                            <div class="form__col _input">
+                                <input name="phone" placeholder="Телефон" class="c-input j-phone-mask">
+                            </div>
+
+                            <div class="form__col _button">
+                                <button type="submit" class="button button_green _wide">ЗАКАЗАТЬ ЗВОНОК</button>
+                            </div>
                         </div>
                     </form>
 
-                </article>
-            </section>
-        </div>
-    </div>
-</template>
+                </div>
+            </div>
 
-<template id="tmpl-popup-layout">
-    <div class="popup" id="popup-layout">
-        <div class="popup__overlay"></div>
-        <div class="popup__dialog">
-            <section class="popup__content _layout">
-                <b class="popup__close js-popup-close _layout"></b>
-                <article class="popup__body _layout">
-                    
-                    <div class="popup__layout">
+            <div class="layout-wrapper__content _documents clearfix j-section" id="documents-anchor">
+                <div class="page-header page-header_push">
+                    <span class="page-header__title">Документация</span>
+                </div>
 
-                        {{#title}}
-                            <div class="page-header"><span class="page-header__title _small">{{title}}</span></div>
-                        {{/title}}
+                <ul class="documents j-documents" id="documents">
 
-                        {{#image}}
-                            <img src="{{image}}" width="120%" class="popup__layout__image" alt="">
-                        {{/image}}
+                    <!-- РАЗРЕШЕНИЕ НА СТРОИТЕЛЬСТВО -->
+                    <li class="documents__item _header">
+                        <div class="documents__item__title">Разрешение на строительство</div>
+                    </li>
 
+                    <li class="documents__item _doc">
+                        <a href="/images/documents/1/1.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/1/1-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc">
+                        <a href="/images/documents/1/2.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/1/2-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc">
+                        <a href="/images/documents/1/3.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/1/3-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <!-- ПРОЕКТНАЯ ДЕКЛАРАЦИЯ. ЭТАП 1. ЛИТЕР 5 -->
+                    <li class="documents__item _header is-motion is-hidden">
+                        <div class="documents__item__title">Проектная декларация. Этап 1. Литер 5</div>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/1.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/1-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/2.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/2-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/3.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/3-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/4.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/4-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/5.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/5-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/6.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/6-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/7.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/7-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/8.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/8-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/2/9.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/2/9-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <!-- УЧРЕДИТЕЛЬНЫЕ ДОКУМЕНТЫ -->
+                    <li class="documents__item _header is-motion is-hidden">
+                        <div class="documents__item__title">Учредительные документы</div>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/1.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/1-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/2.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/2-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/3.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/3-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/4.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/4-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/5.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/5-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/6.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/6-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/7.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/7-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/8.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/8-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/9.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/9-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/10.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/10-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+
+                    <li class="documents__item _doc is-motion is-hidden">
+                        <a href="/images/documents/3/11.jpg" onclick="return false" class="documents__image zoom">
+                            <img src="/images/documents/3/11-s.jpg" alt="" class="documents__image__src">
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="page-button _down">
+                    <div class="page-button__center">
+                        <div class="button button__link">
+                            <a href="/documents.zip" class="button__link__text">Скачать докуметы</a>
+                        </div>
                     </div>
-    
-                </article>
-            </section>
-        </div>
-    </div>
-</template>
 
-<template id="tmpl-popup-message">
-    <div class="popup popup_simple popup_message" id="popup_message">
-        <b class="popup__close popup__close_simple js-popup-close"></b>
-
-        {{#title}}
-        <header class="popup__header popup__header_simple">
-            {{title}}
-        </header>
-        {{/title}}
-
-        {{#text}}
-        <div class="popup__message clearfix">
-            {{text}}
-        </div>
-        {{/text}}
-    </div>
-</template>
-
-<template id="tmpl-popup-error">
-    <div class="popup popup_simple popup_error" id="popup_error">
-        <b class="popup__close popup__close_simple js-popup-close"></b>
-
-        {{#title}}
-        <header class="popup__header popup__header_simple">
-            {{title}}
-        </header>
-        {{/title}}
-
-        {{#text}}
-        <div class="popup__message clearfix">
-            {{text}}
-        </div>
-        {{/text}}
-    </div>
-</template>
-
-<div class="layout-wrapper">
-
-    <span class="sandwich js-sandwich-menu">
-	<span class="sandwich__layer">Menu</span>
-</span>
-
-<div class="menu-overlay" id="menu-overlay"></div>
-
-<header class="layout-header _fh" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-	<div class="layout-header__wrapper">
-		
-		<a href="#slider" class="layout-header__logo logo j-navigation"></a>
-		
-		<nav class="layout-header__navigation navigation" id="navigation" role="navigation">
-			<ul class="navigation__list">
-			    <li class="navigation__item"><a href="#about-section" class="navigation__link j-navigation current">О КОМПЛЕКСЕ</a></li>
-			    <li class="navigation__item"><a href="#plans-section" class="navigation__link j-navigation">ПЛАНИРОВКИ И ЦЕНЫ</a></li>
-			    <li class="navigation__item"><a href="#payment-section" class="navigation__link j-navigation">СПОСОБЫ ОПЛАТЫ</a></li>
-			    <li class="navigation__item"><a href="#documents-section" class="navigation__link j-navigation">ДОКУМЕНТАЦИЯ</a></li>
-			    <li class="navigation__item"><a href="#contacts-section" class="navigation__link j-navigation">КОНТАКТЫ</a></li>
-			</ul>
-		</nav>
-
-		<a href="tel:+79288807575" class="layout-header__phone">8 (928) 880-75-75</a>
-
-	</div>
-</header>
-
-<div class="layout-header_similar"></div>
-    
-    <div class="slider _fb j-section clearfix" id="slider-anchor">
-    <b class="slider__navigation slider__navigation_prev j-slider-navigation" id="slider-prev" data-direction="prev"></b>
-    <b class="slider__navigation slider__navigation_next j-slider-navigation" id="slider-next" data-direction="next"></b>
-
-    <div class="slider__switcher">
-        <label for="swith-day" class="slider__switcher__item current">
-            <span class="slider__switcher__item__m _day">ДЕНЬ</span>
-        </label>
-
-        <input type="radio" name="switch" value="night" id="swith-night" class="slider__switcher__radio j-switcher">
-        
-        <span class="slider__switcher__background"></span>
-
-        <input type="radio" name="switch" value="day" id="swith-day" class="slider__switcher__radio j-switcher" checked>
-
-        <label for="swith-night" class="slider__switcher__item">
-            <span class="slider__switcher__item__m _night">НОЧЬ</span>
-        </label>
-    </div>
-
-    <div class="slider__header">
-        <div class="slider__header__middle">
-            <div class="slider__header__deadline">Сдача июль 2017</div>
-            <div class="slider__header__title">ЖК “ВИНОГРАДЪ”</div>
-        </div>
-    </div>
-
-    <div class="slider__content">
-        <div class="slider__content__checked">
-            <span class="slider__content__checked__title">Квартиры комфорт класса от <strong class="rouble">624 000</strong></span>
-        </div>
-        <div class="slider__content__checked">
-            <span class="slider__content__checked__title">5 минут езды до центра Краснодара</span>
-        </div>
-    </div>
-
-    <div class="slider__groups clearfix" id="slider">
-
-        <div class="slider__groups__item j-slider-item _active" data-daytime="day">
-            <div class="slider__groups__image j-slider-image _active">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/d0.jpg);"></div>
-            </div>
-            
-            <div class="slider__groups__image j-slider-image">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/d1.jpg);"></div>
-            </div>
-            
-            <div class="slider__groups__image j-slider-image">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/d2.jpg);"></div>
-            </div>
-            
-            <div class="slider__groups__image j-slider-image">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/d3.jpg);"></div>
-            </div>
-            
-            <div class="slider__groups__image j-slider-image">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/d4.jpg);"></div>
-            </div>
-        </div>
-
-        <div class="slider__groups__item j-slider-item" data-daytime="night">
-            <div class="slider__groups__image j-slider-image">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/n0.jpg);"></div>
-            </div>
-            
-            <div class="slider__groups__image j-slider-image">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/n1.jpg);"></div>
-            </div>
-            
-            <div class="slider__groups__image j-slider-image _active">
-                <div class="slider__groups__image__src" style="background-image: url(/images/slider/n2.jpg);"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="slider__form">
-        <form action="" method="post" class="form _simple _darken">
-            <div class="form__title">Получите подробную консультацию у нашего специалиста</div>
-
-            <div class="form__row clearfix">
-                <div class="form__col _input">
-                    <input placeholder="Телефон" class="c-input j-phone-mask">
-                </div>
-                
-                <div class="form__col _button">
-                    <button type="submit" class="button button_green _wide">ЗАКАЗАТЬ ЗВОНОК</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-    <div class="layout-wrapper__inner">
-
-        <div class="layout-wrapper__content clearfix">
-
-    <div class="page-header"><span class="page-header__title">Удобное местоположение</span></div>
-
-    <div class="page-subtitle">
-        <p>Расположен в Краснодаре — респ. Адыгея в районе ТЦ “МЕГА-АДЫГЕЯ“</p>
-        <p><strong>Всего 5 минут езды до центра города Краснодар</strong></p>
-    </div>
-    
-    <div class="location clearfix">
-        <div class="location__column _left">
-            <div class="location__item _small">
-                <div class="location__item__flag">
-                    <img src="/images/location/dynamic.png" width="61" class="location__item__flag__src" alt="">
+                    <span class="button button_green j-load-documents" data-motion="show">
+                        <span class="button__text_up">СКРЫТЬ ДОКУМЕНТЫ</span>
+                        <span class="button__text_down">ЕЩЕ ДОКУМЕНТЫ</span>
+                    </span>
                 </div>
 
-                <div class="location__item__content">
-                    <p><strong>Динамично развивающийся, перспективный район,</strong> включающий весь торговый пассаж в радиусе трех километров: IKEA Family, “Мега-Адыгея", "АШАН", "Леруа - Мерлен", рынок "Monarama",  и многие другие.</p>
-                </div>
+                <div class="page-line _nm"></div>
             </div>
 
-            <div class="location__item _small">
-                <div class="location__item__flag">
-                    <img src="/images/location/time.png" width="61" class="location__item__flag__src" alt="">
-                </div>
+            <div class="layout-wrapper__content _contacts clearfix j-section" id="contacts-anchor">
+                <div class="contacts">
+                    <div class="page-header">
+                        <span class="page-header__title">Контакты отдела продаж</span>
+                    </div>
 
-                <div class="location__item__content">
-                    <p><strong>Добраться без преувеличения до центра города Краснодара, без пробок можно всего за 5 минут.</strong></p>
-                    <p>Маршрутки ходят здесь по расписанию одна за другой.</p>
-                </div>
-            </div>
+                    <div class="page-subtitle">
+                        <p>Пос. Перекатный, ул. Сливовая, 7 (Тургеневское шоссе)</p>
+                        <h4>
+                            <strong>КОМПАНИЯ «РЕГИОН СТРОЙ»</strong>
+                        </h4>
+                    </div>
 
-            <div class="location__item _large">
-                <div class="location__item__flag">
-                    <img src="/images/location/leaf.png" width="61" class="location__item__flag__src" alt="">
-                </div>
+                    <div class="contacts__col clearfix">
+                        <div class="contacts__col__item">
+                            <div class="contacts__col__item__label">Режим работы:</div>
+                            <div class="contacts__col__item__worktime">Без выходных, с 9:00 до 19:00 ч.</div>
+                        </div>
 
-                <div class="location__item__content">
-                    <p><strong>Экологически чистый район.</strong></p>
-                    <p>В непосредственной близости располагается река  Кубань и три озера, каждое из которых оборудовано всем необходимым для отдыха: рыбалка, беседки, мангалы, водные скутеры и лодки.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="location__column _right">
-            <div class="location__item _small">
-                <div class="location__item__flag">
-                    <img src="/images/location/pin.png" width="61" class="location__item__flag__src" alt="">
-                </div>
+                        <div class="contacts__col__item _center">
+                            <div class="contacts__col__item__label">Телефон отдела продаж:</div>
+                            <div class="contacts__col__item__phone">8 (928) 880-75-75
+                                <br>8 (918) 033-555-2</div>
+                        </div>
 
-                <div class="location__item__content">
-                    <p><strong>В 800 метрах от ЖК находится школа №19.</strong></p>
-                </div>
-            </div>
-
-            <div class="location__item _small">
-                <div class="location__item__flag">
-                    <img src="/images/location/play.png" width="61" class="location__item__flag__src" alt="">
-                </div>
-
-                <div class="location__item__content">
-                    <p><strong>Новая развлекательная инфраструктура</strong> в виде нового "Мега парка",  аквапарка и дельфинария.</p>
-                </div>
-            </div>
-
-            <div class="location__item _small">
-                <div class="location__item__flag">
-                    <img src="/images/location/map.png" width="61" class="location__item__flag__src" alt="">
-                </div>
-
-                <div class="location__item__content">
-                    <p><strong>Недалеко от жилого комплекса</strong> - три поликлиники, три детских сада и три школы.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="location__map">
-            <img src="/images/map.jpg" alt="">
-        </div>
-    </div>
-
-</div>
-
-        <div class="about _fb j-section" id="about-anchor">
-    <div class="about__header _fh">
-        <div class="page-header"><span class="page-header__title">О КОМПЛЕКСЕ ЖК “ВИНОГРАДЪ”</span></div>
-        <div class="page-subtitle _nm">Сдача домов запланирована на июль 2017 года</div>
-    </div>
-
-    <div class="about__wrapper">
-    
-        <div class="layout-wrapper__content clearfix">
-            <div class="about__overlay">
-                <div class="about__overlay__content">
-                    
-                    <div class="about__slider clearfix">
-                        <div class="about__slider__wrapper j-slider">
-                            <div class="about__slider__item slick-slide">
-                                <div class="about__slider__content">
-                                    <h4>Жилой комплекс «ВиноградЪ»</h4>
-                                    <p>Это новый жилой квартал, располагающийся в экологически чистом районе, по адресу а. Новая Адыгея, уп. Бжегокайская 19, в 10 минутах езды от центра Краснодара.</p>
-                                    <p><em>«Виноградъ» представляет собой комплекс из пяти трехэтажных монолитно-кирпичных домов класса «Комфорт», включает в себя всю необходимую внутреннюю инфраструктуру для комфортного проживания - детские и спортивные площадки, зоны отдыха для семейного досуга, наземные парковки, супермаркет, аптека, салон красоты, а также собственная управляющая компания.</em></p>
-                                </div>
-
-                                <div class="about__slider__push">
-                                    <div class="about__slider__image">
-                                        <img src="/images/about-slide.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="about__slider__item slick-slide">
-                                <div class="about__slider__content">
-                                    <p><strong>Строительство и продажа в ЖК «ВиноградЪ»</strong> осуществляется по Федеральному закону РФ № 214 — ФЗ, что даёт возможность приобрести квартиру несколькими способами: наличные средства, рассрочка без %‚ ипотека, материнский капитал.</p>
-                                    <p>Данный комплекс отличается качеством строительства и удивительным разнообразием планировок: студии, однокомнатные и двухкомнатные квартиры, площадью от 20 до 62 кв. м. Коммерческие помещения, площадью от 20 до 200 кв. м. для открытия собственного бизнеса.</p>
-                                </div>
-
-                                <div class="about__slider__push">
-                                    <div class="about__slider__image">
-                                        <img src="/images/complex.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="about__slider__item slick-slide">
-                                <div class="about__slider__content">
-                                    <h4>Инфраструктура района</h4>
-                                    <p>ЖК «ВиноградЪ» расположен в динамично развивающемся районе, где уже имеется вся необходимая инфраструктура: социальная, коммерческая и транспортная, На данной территории есть большие торговые центры (ТЦ кМега-Адыгея», ТЦ Мопатагпа, ЦОТ «Метро»)‚ автосалоны, радиорынок, салоны мебели («Стопппитхоумт Гипермаркет «Семейный Магнит, МТЦ «Пять звёзд», Тд «Лазурит», сУпермаркеты, аптеки, салоны красоты, Фитнес-центры, кафе и т д.</p>
-                                    <p>От ЖК «ВиноградЪ» добраться до центра города Краснодара можно всего за 5 минут. ЖК «ВиноградЪх располагается в 900 метрах от реки Кубань. В непосредственной близости находятся три озера, каждое из которых оборудовано всем необходимым для отдыха: рыбалка, беседки, мангалы, водные скутеры и лодки.</p>
-                                </div>
-
-                                <div class="about__slider__push">
-                                    <div class="about__slider__image">
-                                        <img src="/images/infrastructure.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="about__slider__item slick-slide">
-                                <div class="about__slider__content">
-                                    <h4>О застройщике РЕГИОН СТРОЙ</h4>
-                                    <p>Строительная компания «Регион Строй» ведет свою деятельность с 2012 года. <br>За это время «Регион Строй» построил и сдал в эксплуатацию более 30 000 квадратных метров жилой и коммерческой недвижимости.</p>
-                                    <p>В компании «РС» находятся профессиональные строители, которые возводят и реконструируют объекты недвижимости качественно, а значит надежно.<br>«Регион Строй» - одна из немногих строительных компаний, которые нарабатывают свой имидж качеством выполненных работ и большим количеством довольных хозяев квартир.</p>
-                                </div>
-
-                                <div class="about__slider__push">
-                                    <div class="about__slider__image">
-                                        <img src="/images/region-stroy.jpg" alt="">
-                                    </div>
-                                </div>
+                        <div class="contacts__col__item">
+                            <div class="contacts__col__item__label">Email для коммерческих предложений:</div>
+                            <div class="contacts__col__item__email">
+                                <a href="mailto:natali93rus@bk.ru">natali93rus@bk.ru</a>
                             </div>
                         </div>
                     </div>
 
-                </div>
-            </div>
+                    <div class="page-line _push"></div>
 
-            <div class="about__comments clearfix">
-                <div class="about__comments__content">
-                    <div class="about__comments__item">
-                        <div class="about__comments__item__image">
-                            <img src="/images/shield.png" class="about__comments__item__image__src" alt="">
-                        </div>
-                        <div class="about__comments__item__desc">
-                            <div class="about__comments__item__desc__middle">
-                                Строим по ФЗ 214<br>Гарантия защиты ваших прав
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="about__comments__item">
-                        <div class="about__comments__item__image">
-                            <img src="/images/communication.png" class="about__comments__item__image__src" alt="">
-                        </div>
-                        <div class="about__comments__item__desc">
-                            <div class="about__comments__item__desc__middle">
-                                В квартирах центральные<br>коммуникации
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="about__comments__item">
-                        <div class="about__comments__item__image">
-                            <img src="/images/strach.png" class="about__comments__item__image__src" alt="">
-                        </div>
-                        <div class="about__comments__item__desc">
-                            <div class="about__comments__item__desc__middle">
-                                Страхование гражданской<br>ответственности  застройщика
-                            </div>
-                        </div>
+                    <div class="page-button">
+                        <div class="page-button__title">Остались вопросы?</div>
+                        <a href="#popup-feedback" class="button button_green js-open-popup">НАПИШИТЕ НАМ</a>
                     </div>
                 </div>
             </div>
+
+            <div class="contact-map">
+                <div class="contact-map__layout" id="location-map"></div>
+            </div>
+
         </div>
-    </div>
-
-</div>
-
-        <div class="layout-wrapper__content _plans j-section clearfix" id="plans-anchor">
-    <div class="page-header"><span class="page-header__title">Планировки и цены</span></div>
-    
-    <ul class="tabs j-tab-closest">
-        <li class="tabs__item _tripple _group">
-            <div class="tabs__item _smaller">
-                <a href="#.is-item" data-wrapper="plans" class="tabs__item__link j-tab _np current">Все</a>
-            </div>
-
-            <div class="tabs__item _longer">
-                <a href="#._studio" data-wrapper="plans" class="tabs__item__link j-tab">Студии от 624 000 Руб.</a>
-            </div>
-        </li>
-        <li class="tabs__item _tripple"><a href="#._r1" data-wrapper="plans" class="tabs__item__link j-tab">1-комнатные квартиры от 997 000 Руб.</a></li>
-        <li class="tabs__item _tripple"><a href="#._r2" data-wrapper="plans" class="tabs__item__link j-tab">2 комнатные квартиры от 1 543 000 Руб.</a></li>
-    </ul>
-    
-    <ul class="plans" id="tab-plans">
-        
-        <!-- Студии -->
-
-        <li class="plans__item is-item _studio is-show">
-            <div class="plans__item__title">КВАРТИРА-СТУДИЯ</div>
-            <a href="/images/plans/studio/1.jpg" title="КВАРТИРА-СТУДИЯ" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/studio/1.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 20,79 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _studio is-show">
-            <div class="plans__item__title">КВАРТИРА-СТУДИЯ</div>
-            <a href="/images/plans/studio/2.jpg" title="КВАРТИРА-СТУДИЯ" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/studio/2.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 24,76 кв.м.</p>
-            </div>
-        </li>
-
-        <!-- 1 комнатные -->
-        
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/1.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/1.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 42,10 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/2.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/2.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 38,54 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/3.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/3.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 34,40 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/4.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/4.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 37,73 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/5.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/5.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 37,33 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/6.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/6.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 34,66 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/7.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/7.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 35,10 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/8.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/8.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 34,44 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/9.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/9.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 38,42 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/10.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/10.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 34,62 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/11.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/11.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 36,36 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/12.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/12.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 39,80 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/13.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/13.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 42,19 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r1 is-show">
-            <div class="plans__item__title">1-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/1/14.jpg" title="1-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/1/14.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 34,38 кв.м.</p>
-            </div>
-        </li>
-        
-        <!-- 2 комнатные -->
-
-        <li class="plans__item is-item _r2 is-show">
-            <div class="plans__item__title">2-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/2/1.jpg" title="2-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/2/1.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 62,26 кв.м.</p>
-            </div>
-        </li>
-
-        <li class="plans__item is-item _r2 is-show">
-            <div class="plans__item__title">2-КОМНАТНАЯ КВАРТИРА</div>
-            <a href="/images/plans/2/2.jpg" title="2-КОМНАТНАЯ КВАРТИРА" onclick="return false" class="plans__item__layout j-plans-layout"><img src="/images/plans/2/2.jpg" alt="" class="plans__item__layout__src"></a>
-            <div class="plans__item__description">
-                <p><strong>Общая площадь:</strong> 53,20 кв.м.</p>
-            </div>
-        </li>
-    </ul>
-</div>
-
-        <div class="rooms _fb">
-    <div class="rooms__header _fh">
-        <div class="page-header"><span class="page-header__title">Современные и комфортные квартиры</span></div>
-    </div>
-
-    <div class="rooms__wrapper">
-        <div class="layout-wrapper__content clearfix">
-            <div class="rooms__overlay">
-                <div class="rooms__overlay__content">
-
-                    <div class="rooms__col clearfix">
-                        <div class="rooms__col__item">
-                            <div class="rooms__col__item__picture">
-                                <img src="/images/wall.png" alt="" class="rooms__col__item__picture__src">
-                            </div>
-
-                            <div class="rooms__col__item__content">
-                                <p><strong>Современная монолитно-кирпичная технология</strong></p>
-                                <p>дорогостоящие, высококачественные строительные материалы, монолит, керамический забутовочный и облицовочный  кирпич. Внешняя стена дома - 54см</p>
-                            </div>
-                        </div>
-                        
-                        <div class="rooms__col__item">
-                            <div class="rooms__col__item__picture">
-                                <img src="/images/trees-outline.png" alt="" class="rooms__col__item__picture__src">
-                            </div>
-
-                            <div class="rooms__col__item__content">
-                                <p><strong>Благоустройство и озеленение</strong> придомовой территории, современные детские, спортивные площадки.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rooms__col clearfix">
-                        <div class="rooms__col__item">
-                            <div class="rooms__col__item__picture">
-                                <img src="/images/house-plan-scale.png" alt="" class="rooms__col__item__picture__src">
-                            </div>
-
-                            <div class="rooms__col__item__content">
-                                <p><strong>Эрганомичные планировки</strong> от 20 до 62 кв. м</p>
-                            </div>
-                        </div>
-
-                        <div class="rooms__col__item">
-                            <div class="rooms__col__item__picture">
-                                <img src="/images/buildings-near-the-sea-made-of-various-shapes.png" alt="" class="rooms__col__item__picture__src">
-                            </div>
-
-                            <div class="rooms__col__item__content">
-                                <p><strong>Внутренняя инфраструктура на территории ЖК:</strong> собственная управляющая компания, аптека, минимаркет, салон красоты и т.д.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rooms__col clearfix">
-                        <div class="rooms__col__item">
-                            <div class="rooms__col__item__picture">
-                                <img src="/images/roller-brush.png" alt="" class="rooms__col__item__picture__src">
-                            </div>
-
-                            <div class="rooms__col__item__content">
-                                <p><strong>Предчистовая отделка:</strong> пол - стяжка, выводы под сантехнику, электророзетки, счетчики и радиаторы отопления с регулировкой температуры, металлопластиковые окна, металлическая входная дверь.</p>
-                            </div>
-                        </div>
-
-                        <div class="rooms__col__item">
-                            <div class="rooms__col__item__picture">
-                                <img src="/images/valve.png" alt="" class="rooms__col__item__picture__src">
-                            </div>
-
-                            <div class="rooms__col__item__content">
-                                <p><strong>Центральные коммуникации</strong></p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-        <div class="layout-wrapper__content _payment j-section clearfix" id="payment-anchor">
-    <div class="page-header"><span class="page-header__title">Способы оплаты</span></div>
-    <div class="page-subtitle">Приобрести жилье можно несколькими способами</div>
-
-    <ul class="tabs j-tab-closest _stuck">
-        <li class="tabs__item _w25"><a href="#._cash" data-wrapper="payment" class="tabs__item__link j-tab current">Наличные</a></li>
-        <li class="tabs__item _w25"><a href="#._installments" data-wrapper="payment" class="tabs__item__link j-tab">Рассрочка</a></li>
-        <li class="tabs__item _w25"><a href="#._mortgage" data-wrapper="payment" class="tabs__item__link j-tab">Ипотека</a></li>
-        <li class="tabs__item _w25"><a href="#._maternal-capital" data-wrapper="payment" class="tabs__item__link j-tab">Материнский капитал</a></li>
-    </ul>
-
-    <div class="tabs-content" id="tab-payment">
-        
-        <div class="tabs-content__item is-item is-show _cash">
-            <h3>ВЫ МОЖЕТЕ ОПЛАТИТЬ НАЛИЧНЫМИ</h3>
-        </div>
-        
-        <div class="tabs-content__item is-item _installments">
-            <h3>БЕСПРОЦЕНТНАЯ РАССРОЧКА В ЖК "ВИНОГРАДЪ"</h3>
-
-            <p>Сейчас не каждый в состоянии при покупке квартиры внести всю необходимую сумму сразу.</p>
-            <p>Удобным вариантом решения жилищной проблемы является приобретение недвижимости в рассрочку.</p>
-            <p>Компания "Регион Строй предлагает удобные условия покупки жилья в ЖК "ВиноградЪ" - беспроцентная рассрочка на 6 месяцев и выплатой первоначального взноса 50% от стоимости квартиры. Клиент в праве самостоятельно выбрать время оплаты (ежемесячно/поквартально, дата, сумма).</p>
-            <p>Договор обсуждается и заключается напрямую с застройщиком. Подготовленный договор долевого участия отправляется в Юстицию и уже после того, как он будет зарегистрирован, клиент оплачивает первоначальный взнос. Это необходимо для того, чтобы будущие жильцы были уверены в выполнении застройщиком всех юридических обязательств.</p>
-            <p>Покупка квартиры в рассрочку - удобный способ покупки жилья для тех, кто еще не успел накопить необходимые средства и тех, кто не хочет выплачивать определенный процент банку.</p>
-        </div>
-        
-        <div class="tabs-content__item is-item _mortgage">
-            <h3>ПЛЮСЫ ИПОТЕКИ:</h3>
-
-            <ol>
-                <li>Вы платите свои деньги за собственное жилье.</li>
-                <li>Сумма ежемесячного платежа по кредиту часто меньше или соизмерима с арендной платой и не изменяется в теччении срока ипотеки.</li>
-                <li>Возможность получить квартиру сразу, а не копить на её покупку долгие годы.</li>
-                <li>В некоторых случаях (покупка квартиры на этапе строительства) приобрести квартиру в кредит выгоднее, чем покупать её спустя время. Вы инвистируете.</li>
-                <li>Покупая жилье (покупка квартиры на этапе строительства) можно сделать перепланировку на собственное усмотрение.</li>
-                <li>Банк не выселит вас без объяснения причины и даже при потере работы.</li>
-                <li>Предоставляются различные условия ипотечного кредитования для учителей, врачей, работников гос.сфера и силовых структур.</li>
-                <li>Юридическая чистота сделки.</li>
-            </ol>
-
-            <p>Банки, с которыми сотрудничает наша компания ("Сбербанк", "ВТБ Банк Москвы") предлагает будущим жильцам ЖК "ВиноградЪ" фиксированную ставку по кредиту. А это значит, что вам не стоит бояться сумм ежемесячного платежа по кредиту - со временем они не будут увеличиваться. Скорее наоборот, с каждым годом выплачивать ипотеку будет легче, так как заработная плата имеет свойство повышаться, а ипотека остается таких же размеров, например, как пять лет назад, когда вы только её взяли.</p>
-            <p>"Компания "Регион Строй" в сотрудничестве с ведущими банками страны "Сбербанк", "ВТБ Банк Москвы" поможет осуществить вашу заветную месту - приобрести собственное жилье. Купить квартиру в ЖК "ВиноградЪ" можно по средствам ипотечного кредитования на выгодных условиях".</p>
-            
-            <ul class="banks">
-                <li class="banks__item">
-                    <div class="banks__item__logo">
-                        <img src="/images/banks/center-invest.jpg" class="banks__item__src" alt="">
-                    </div>
-                    <div class="banks__item__content">
-                        "Ипотека с гос. поддержкой" <br>составляет 10,5 процентов годовых*.
-                    </div>
-                </li>
-                <li class="banks__item">
-                    <div class="banks__item__logo">
-                        <img src="/images/banks/sberbank.jpg" class="banks__item__src" alt="">
-                    </div>
-                    <div class="banks__item__content">
-                        Ипотека с гос.поддержкой <br>под 12% годовых.*
-                    </div>
-                </li>
-                <li class="banks__item">
-                    <div class="banks__item__logo">
-                        <img src="/images/banks/vtb-bm.jpg" class="banks__item__src" alt="">
-                    </div>
-                    <div class="banks__item__content">
-                        "Ипотека с гос. поддержкой" <br>фиксированная - 11,8%* годовых.
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="tabs-content__item is-item _maternal-capital">
-            <h3>ПОКУПКА КВАРТИРЫ ЗА МАТЕРИНСКИЙ КАПИТАЛ</h3>
-
-            <p><strong>Материнским капиталом можно воспользоваться двумя способами:</strong></p>
-            
-            <ul>
-                <li>Реализовать матреринский капитал с привлечением ипотечного кредита на жилье, если ребенок не достиг 3-х летнего возраста.</li>
-                <li>Использовать материнский капитал (на 2015 год - 453026 руб.) для улучшения жилищных условий, на покупку квартиры в частности, после того, как ребенку исполнилось 3 года.</li>
-            </ul>
-            
-            <p><strong>Материнским капиталом можно распорядиться так:</strong></p>
-
-            <ul>
-                <li>Приобрести квартиру за наличный расчет;</li>
-                <li>Оплатить первый взнос ипотеки или по целевому займу;</li>
-                <li>Стать участником долевого строительства.</li>
-            </ul>
-
-            <h3>НЕОБХОДИМЫЕ ДОКУМЕНТЫ ДЛЯ ПОЛУЧЕНИЯ МАТЕРИНСКОГО КАПИТАЛА</h3>
-
-            <ul>
-                <li>Паспорт</li>
-                <li>Справка о наличие счета (пенсионное отделение)</li>
-                <li>Сертификат (оригинал)</li>
-            </ul>
-
-            <p>Вы просто отдаете необходимые документы, все остальное за вас делает компания-застройщик.</p>
-            <p>Либо вы можете самостоятельно отправиться в пенсионный фонд и распорядиться своими средствами.</p>
-            <p>Деньги с материнского капитала поступят на счет компании застройщика в течении двух месяцев, но уже с момента подписания договора купленная квартира числится за клиентом.</p>
-            <p>Материнский капитал - это отличная помощь молодым семьям при обустройстве собственного жилья.</p>
-        </div>
-
-        <div class="page-line _push"></div>
-
-        <form action="" method="post" class="form _simple _darken">
-            <div class="form__title">Получите подробную консультацию у нашего специалиста</div>
-
-            <div class="form__row clearfix">
-                <div class="form__col _input">
-                    <input placeholder="Телефон" class="c-input j-phone-mask">
-                </div>
-                
-                <div class="form__col _button">
-                    <button type="submit" class="button button_green _wide">ЗАКАЗАТЬ ЗВОНОК</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
-</div>
-
-        <div class="timeline clearfix">
-    <div class="layout-wrapper__content clearfix">
-        <div class="page-header"><span class="page-header__title _white">ход строительства</span></div>
-        
-        <div class="timeline__carousel carousel j-timeline">
-            <div class="carousel__outer">
-                <div class="carousel__wrapper j-carousel">
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/13.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/13-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-                    
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/12.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/12-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-                    
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/11.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/11-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/10.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/10-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/9.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/9-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/8.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/8-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/7.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/7-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/6.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/6-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/5.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/5-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/4.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/4-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/3.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/3-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/2.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/2-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-
-                    <div class="carousel__item slick-slide">
-                        <a href="/images/timeline/1.jpg" onclick="return false" class="carousel__item__image zoom">
-                            <img src="/images/timeline/1-s.jpg" alt="" class="carousel__item__image__src">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-        <div class="layout-wrapper__content _documents clearfix j-section" id="documents-anchor">
-    <div class="page-header page-header_push"><span class="page-header__title">Документация</span></div>
-    
-    <ul class="documents j-documents" id="documents">
-        
-        <!-- РАЗРЕШЕНИЕ НА СТРОИТЕЛЬСТВО -->
-        <li class="documents__item _header">
-            <div class="documents__item__title">Разрешение на строительство</div>
-        </li>
-
-        <li class="documents__item _doc">
-            <a href="/images/documents/1/1.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/1/1-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-        
-        <li class="documents__item _doc">
-            <a href="/images/documents/1/2.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/1/2-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-        
-        <li class="documents__item _doc">
-            <a href="/images/documents/1/3.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/1/3-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <!-- ПРОЕКТНАЯ ДЕКЛАРАЦИЯ. ЭТАП 1. ЛИТЕР 5 -->
-        <li class="documents__item _header is-motion is-hidden">
-            <div class="documents__item__title">Проектная декларация. Этап 1. Литер 5</div>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/1.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/1-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/2.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/2-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/3.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/3-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/4.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/4-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/5.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/5-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/6.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/6-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/7.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/7-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/8.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/8-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/2/9.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/2/9-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <!-- УЧРЕДИТЕЛЬНЫЕ ДОКУМЕНТЫ -->
-        <li class="documents__item _header is-motion is-hidden">
-            <div class="documents__item__title">Учредительные документы</div>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/1.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/1-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/2.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/2-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/3.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/3-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/4.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/4-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/5.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/5-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/6.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/6-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/7.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/7-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/8.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/8-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/9.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/9-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/10.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/10-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-
-        <li class="documents__item _doc is-motion is-hidden">
-            <a href="/images/documents/3/11.jpg" onclick="return false" class="documents__image zoom">
-                <img src="/images/documents/3/11-s.jpg" alt="" class="documents__image__src">
-            </a>
-        </li>
-    </ul>
-    
-    <div class="page-button _down">
-        <span class="button button_green j-load-documents" data-motion="show">
-            <span class="button__text_up">СКРЫТЬ ДОКУМЕНТЫ</span>
-            <span class="button__text_down">ЕЩЕ ДОКУМЕНТЫ</span>
-        </span>
-    </div>
-    
-    <div class="page-line _nm"></div>
-</div>
-
-        <div class="layout-wrapper__content _contacts clearfix j-section" id="contacts-anchor">
-    <div class="contacts">
-        <div class="page-header"><span class="page-header__title">Контакты отдела продаж</span></div>
-        
-        <div class="page-subtitle">
-            <p>Пос. Перекатный, ул. Сливовая, 7 (Тургеневское шоссе)</p>
-            <h4><strong>КОМПАНИЯ «РЕГИОН СТРОЙ»</strong></h4>
-        </div>
-        
-        <div class="contacts__col clearfix">
-            <div class="contacts__col__item">
-                <div class="contacts__col__item__label">Режим работы:</div>
-                <div class="contacts__col__item__worktime">Без выходных, с 9:00 до 19:00 ч.</div>
-            </div>
-
-            <div class="contacts__col__item _center">
-                <div class="contacts__col__item__label">Телефон отдела продаж:</div>
-                <div class="contacts__col__item__phone">8 (928) 880-75-75</div>
-            </div>
-
-            <div class="contacts__col__item">
-                <div class="contacts__col__item__label">Email для коммерческих предложений:</div>
-                <div class="contacts__col__item__email"><a href="mailto:natali93rus@bk.ru">natali93rus@bk.ru</a></div>
-            </div>
-        </div>
-
-        <div class="page-line _push"></div>
-        
-        <div class="page-button">
-            <div class="page-button__title">Остались вопросы?</div>
-            <a href="#popup-feedback" class="button button_green js-open-popup">НАПИШИТЕ НАМ</a>
-        </div>
-    </div>
-</div>
-
-<div class="contact-map">
-    <div class="contact-map__layout" id="location-map"></div>
-</div>
 
     </div>
 
-</div>
+    <footer class="layout-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+        <div class="layout-footer__wrapper">
 
-<footer class="layout-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-	<div class="layout-footer__wrapper">
-		
-		<div class="layout-footer__copiright">© 2016 Все права защищены "Регион Строй"</div>
-		
-		<div class="layout-footer__logo">
-			<span class="layout-footer__logo__src"></span>
-		</div>
+            <div class="layout-footer__logo">
+                <span class="layout-footer__logo__src"></span>
+            </div>
 
-        <div class="layout-footer__studio">
-            <a href="javascript:goPage('http://newtime.biz/')" target="_blank" title="Разработка и продвижение сайта" class="layout-footer__studio__desc">Разработка и продвижение сайта</a> — <a href="javascript:goPage('http://newtime.biz/')" target="_blank" title="Разработка и продвижение сайта" class="layout-footer__studio__link">NEWTIME.BIZ</a>
+            <div class="layout-footer__copiright">© 2016 Все права защищены "Регион Строй"</div>
+
+            <div class="layout-footer__studio">
+                <a href="javascript:goPage('http://newtime.biz/')" target="_blank" title="Разработка и продвижение сайта" class="layout-footer__studio__desc">Разработка и продвижение сайта</a>—
+                <a href="javascript:goPage('http://newtime.biz/')" target="_blank" title="Разработка и продвижение сайта" class="layout-footer__studio__link">NEWTIME.BIZ</a>
+            </div>
+
         </div>
-		
-	</div>
-</footer>
+    </footer>
 
-<!--[if lt IE 9]>
+    <!--[if lt IE 9]>
 <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
 <![endif]-->
 
-<script src="../js/vendor.min.js"></script>
-<script src="../js/app.min.js"></script>
+    <script src="../js/vendor.min.js"></script>
+    <script src="../js/app.min.js"></script>
 
-<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU&onload=yandexMap" type="text/javascript"></script>
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU&onload=yandexMap" type="text/javascript"></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-81892885-1', 'auto');
+          ga('send', 'pageview');
+    </script>
+
+    <script crossorigin="anonymous" async type="text/javascript" src="//api.pozvonim.com/widget/callback/v3/106a5cc24ed1ab7abfd9efd516bfa2df/connect" id="check-code-pozvonim" charset="UTF-8"></script>
+
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 877119737;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/877119737/?value=0&amp;guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter38867515 = new Ya.Metrika({
+                        id:38867515,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+    
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+    
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript>
+        <div>
+            <img src="https://mc.yandex.ru/watch/38867515" style="position:absolute; left:-9999px;" alt="" />
+        </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 
 </body>
+
 </html>

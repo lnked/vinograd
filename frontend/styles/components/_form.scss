@@ -2,7 +2,8 @@
     clear: both;
 
     &._simple {
-        width: 593px;
+        width: 100%;
+        max-width: 593px;
         padding: 20px;
         margin: 0 auto;
     }
@@ -30,7 +31,7 @@
         color: #fff;
         font-size: 2rem;
         font-weight: 400;
-        line-height: 1;
+        line-height: 1.2;
         text-align: center;
         margin-bottom: 10px;
     }
@@ -54,12 +55,12 @@
         float: left;
 
         &._input {
-            width: 333px;
+            width: 60%;
         }
 
         &._button {
-            width: 215px;
-            margin-left: 5px;
+            width: 39%;
+            margin-left: 1%;
         }
     }
 
@@ -67,3 +68,25 @@
         text-align: center;
     }
 }
+
+@media only screen and (max-width: 480px) {
+    .form {
+        &__col {
+            &._input, &._button {
+                width: 100%;
+                clear: both;
+            }
+
+            &._input {
+                margin-bottom: 15px;
+            }
+
+            &._button {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {}
+@media only screen and (max-width: 320px) {}

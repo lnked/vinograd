@@ -25,11 +25,28 @@
     &_green {
         background-color: #409555;
         box-shadow: 0 2px 0 0 #1d6c31;
+
+        &:hover {
+            color: #fff;
+            background-color: darken(#409555, 5%);
+        }
     }
 
-    &:hover {
-        color: #fff;
-        background-color: darken(#409555, 5%);
+    &__link {
+        height: auto;
+        margin-bottom: 20px;
+        display: inline-block;
+
+        &__text {
+            color: #409555;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            text-decoration: underline;
+        }
+
+        &:hover &__text {
+            text-decoration: none;
+        }
     }
 
     &.disabled {

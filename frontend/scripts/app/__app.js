@@ -1,7 +1,16 @@
-(function(body){
+;( function( $ ) {
     "use strict";
 
-    var app = {
+    $.app = {
+
+        initSandwich: function() {
+            $.app.sandwich.init({
+                keyHooks: !0,
+                selector: '.js-sandwich-menu',
+                wrapper: '.layout-wrapper',
+                overlay: '#menu-overlay'
+            });
+        },
 
         initMask: function() {
             $(".j-phone-mask").mask("+7 (999) 999-99-99");
@@ -59,7 +68,7 @@
             this.initBlock('.j-gallery');
             this.initBlock('.j-timeline');
             this.initBlock('.j-documents');
-            
+            this.initBlock('.j-floors');
         },
 
         initTabs: function() {
@@ -80,9 +89,42 @@
                     }
 
                     $(this).addClass('current');
+
+                    var $cover = $(this).closest('.j-tabs-cover');
+                    var $content = $cover.find('.j-tabs-content');
+
+                    if ($content.hasClass('active')) {
+                        $content.removeClass('animate');
+                        
+                        setTimeout(function(){
+                            $content.removeClass('active');
+                        }, 300);
+                    }
                 }
                 
                 return !1;
+            });
+
+            $('body').on('click', '.j-tabs-trigger', function(){
+                var $cover = $(this).closest('.j-tabs-cover');
+                if ($cover.length) {
+                    var $content = $cover.find('.j-tabs-content');
+                    
+                    if ($content.hasClass('active')) {
+                        $content.removeClass('animate');
+                        
+                        setTimeout(function(){
+                            $content.removeClass('active');
+                        }, 300);
+                    }
+                    else {
+                        $content.addClass('active');
+                        
+                        setTimeout(function(){
+                            $content.addClass('animate');
+                        }, 10);
+                    }
+                }
             });
         },
 
@@ -99,24 +141,23 @@
                 nextArrow: '<button type="button" class="carousel__navigation _next slick-next"></button>',
                 responsive: [
                     {
-                        breakpoint: 1024,
+                        breakpoint: 768,
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 3,
-                            infinite: true,
-                            dots: true
                         }
                     },
                     {
-                        breakpoint: 600,
+                        breakpoint: 568,
                         settings: {
                             slidesToShow: 2,
                             slidesToScroll: 2
                         }
                     },
                     {
-                        breakpoint: 480,
+                        breakpoint: 375,
                         settings: {
+                            fade: true,
                             slidesToShow: 1,
                             slidesToScroll: 1
                         }
@@ -143,7 +184,7 @@
         },
 
         initSwitcher: function() {
-            var $slider = $('#slider'), timeout = 6000;
+            var $slider = $('#slider'), timeout = 6000, intervalID = null;
 
             $('body').on('change', '.j-switcher', function(){
                 var daytime = $(this).val();
@@ -157,8 +198,23 @@
                 }, 1000);
             });
 
+            function startInterval() {
+                clearInterval(intervalID);
+                return setInterval(function(){
+                    $('#slider-next').trigger('click');
+                }, timeout);
+            }
+
+            function stopInterval(interval) {
+                clearInterval(interval);
+            }
+
+            intervalID = startInterval();
+
             $('body').on('click', '.j-slider-navigation', function(){
                 var direction = $(this).data('direction');
+
+                stopInterval(intervalID);
 
                 var $group = $slider.find('.j-slider-item._active'),
                     _count = $group.find('.j-slider-image').length - 1,
@@ -186,12 +242,9 @@
 
                 setTimeout(function(){
                     $group.find('.j-slider-image._last-active').removeClass('_last-active');
+                    intervalID = startInterval();
                 }, 1000);
             });
-
-            setInterval(function(){
-                $('#slider-next').trigger('click');
-            }, timeout);
         },
 
         initPlans: function() {
@@ -218,18 +271,52 @@
             });
         },
 
+        initLocation: function() {
+            var $mobile = $('#location-mobile'), $content = null, number = 0;
+            
+            $mobile.find('.j-close').on('click', function(){
+                $mobile.addClass('is-disabled');
+                $content = $mobile.find('.j-content');
+
+                $content.removeClass('_animate');
+
+                setTimeout(function(){
+                    $content.removeClass('_active');
+
+                    $mobile.addClass('is-hidden').removeClass('is-disabled');
+                }, 300);
+            });
+
+            $('body').on('click', '.j-loc-flag', function(){
+                $mobile.removeClass('is-hidden');
+                $content = $mobile.find('.j-content');
+
+                $content.find('.j-content-middle').html($(this).closest('.location__item').find('.location__item__content').html());
+
+                $content.addClass('_active');
+                
+                number = $(this).data('number');
+
+                $mobile.removeClass('_num-1 _num-2 _num-3 _num-4 _num-5 _num-6').addClass('_num-' + number);
+
+                setTimeout(function(){
+                    $content.addClass('_animate');
+                }, 10);
+            });
+        },
+
         init: function() {
-            this.initMask();
             this.initTabs();
             this.initZoom();
             this.initPlans();
             this.initPopup();
             this.initSlider();
+            this.initSandwich();
             this.initSwitcher();
+            this.initLocation();
             this.initCarousel();
             this.initDocuments();
         }
     };
 
-    app.init();
-})(document.body);
+})( jQuery );

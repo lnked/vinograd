@@ -33,7 +33,8 @@
     }
 
     scrollToAnchor = function(hash, animate) {
-        hash = hash.replace('-section', '');
+        hash = hash.replace('-section', '').split('?')[0];
+
         $target = $(hash + '-anchor');
 
         if ($target.length)
@@ -60,7 +61,7 @@
     setTimeout(function(){
         if (window.location.hash.length > 1) {
             $navigation.addClass('is-disabled');
-            scrollToAnchor(window.location.hash, true);
+            scrollToAnchor(window.location.hash, false);
         }
     }, 50);
 

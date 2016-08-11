@@ -1,0 +1,86 @@
+.floors {
+    clear: both;
+    margin-bottom: 100px;
+
+    &__item {
+        width: 33%;
+        outline: none;
+        display: inline-block;
+        vertical-align: top;
+    
+        &:not(:first-child) {
+            padding-left: 15px;
+        }
+
+        &:not(:last-child) {
+            padding-right: 15px;
+        }
+
+        &__content {
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        &__link {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            outline: none;
+            border: 2px solid #409555;
+
+            &:hover {
+                border-color: darken(#409555, 15%);
+            }
+        }
+
+        &__stage {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        &__floor {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        &__entrance {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        &__type {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .floors {
+        margin-bottom: 70px;
+    
+        &__item {
+            width: 100%;
+            display: block;
+            clear: both;
+        
+            &:not(:first-child) {
+                padding-left: 0;
+            }
+
+            &:not(:last-child) {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

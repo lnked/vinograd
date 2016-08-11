@@ -1,16 +1,21 @@
 function yandexMap() {
     ymaps.ready(function () {
-        var YMap, myPlacemark;
+        var YMap, myPlacemark, is_mobile = $(window).width() <= 667;
         
         YMap = new ymaps.Map('location-map', {
-            center: [45.030203, 38.940457],
+            center: [45.021188,38.926667],
             zoom: 16,
             controls: ['zoomControl', 'fullscreenControl']
         });
 
+        YMap.behaviors.disable('multiTouch');
         YMap.behaviors.disable('scrollZoom');
         YMap.controls.get('zoomControl').options.set('size', 'small');
         YMap.controls.get('zoomControl').options.set('position', { right: 10, top: 50 });
+
+        if (is_mobile) {
+            YMap.behaviors.disable('drag');
+        }
 
         myPlacemark = new ymaps.Placemark(YMap.getCenter(), {}, {
             iconLayout: 'default#image',

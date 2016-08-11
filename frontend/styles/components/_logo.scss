@@ -10,4 +10,26 @@
     .logo {
         background-image: url(/images/logo@2x.png);
     }
+
+    @media only screen and (max-width: 1024px) {
+        .logo {
+            background-image: url(/images/logo-mobile@2x.png);
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .logo {
+        width: 197px;
+        height: 53px;
+        background-size: 197px 53px;
+        background-image: url(/images/logo-mobile.png);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .logo {
+        width: 52px;
+        background-position: 0 0;
+    }
 }

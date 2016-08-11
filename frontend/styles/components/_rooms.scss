@@ -81,3 +81,48 @@
         }
     }
 }
+
+@media only screen and (max-width: 960px) {
+    .rooms {
+        &__overlay {
+            padding: 40px 25px;
+        }
+
+        &__col {
+            &__item {
+                &__picture__src {
+                    max-width: 60px;
+                }
+
+                &__content {
+                    padding-left: 80px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .rooms {
+        &__col {
+            &:not(:last-child) {
+                margin-bottom: 50px;
+            }
+
+            &__item {
+                clear: both;
+                width: 100%;
+                padding: 0;
+                
+                &:not(:last-child) {
+                    margin-bottom: 50px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 568px) {}
+@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 375px) {}
+@media only screen and (max-width: 320px) {}

@@ -34,7 +34,7 @@
 
             &__phone {
                 font-size: 3rem;
-                line-height: 1;
+                line-height: 1.3;
                 font-weight: 700;
             }
 
@@ -52,3 +52,28 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .contacts {
+        &__col {
+            &__item {
+                &:not(:last-child) {
+                    margin-bottom: 40px;
+                }
+
+                &, &._center {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                &__label {
+                    margin-bottom: 12px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 568px) {}
+@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 375px) {}
+@media only screen and (max-width: 320px) {}

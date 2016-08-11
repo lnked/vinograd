@@ -6,7 +6,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
 ;(function($) {
     "use strict";
-    
+
     var defaults = {
         wrapper: 'body',
         popupClass: '.popup',
@@ -37,7 +37,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
     $dialog = '',
     $trigger = '',
     $body = $('body'),
-    $win = $(window), 
+    $win = $(window),
     $doc = $(document),
     selector_cache,
     notify_timeout,
@@ -54,7 +54,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
             }, defaults.speed);
         }
     };
-    
+
     $.popup = {
         _getPopup: function(selector)
         {
@@ -68,21 +68,21 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
             return $popup.length ? $popup : null;
         },
-        
-        _getPosition: function($popup) 
+
+        _getPosition: function($popup)
         {
             popup = this;
 
             var prop = {},
                 ww = $win.width(),
                 wh = $win.height(),
-                
+
                 dw = $doc.width(),
                 dh = $doc.height(),
-                
+
                 pw = $popup.outerWidth(),
                 ph = $popup.outerHeight(),
-                
+
                 st = $win.scrollTop(),
 
                 left = 0,
@@ -96,7 +96,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
             if(dw >= pw) {
                 left = Math.round((dw - pw)/2);
             }
-            
+
             if(wh >= ph) {
                 css.position = 'fixed';
                 top = '50%';
@@ -106,7 +106,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                 css.position = 'absolute';
                 top = st+Math.round((wh - ph)/2);
             }
-            
+
             css.top = top;
 
             if(posType == 'right') {
@@ -118,7 +118,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
             return css;
         },
-        
+
         _changePosition: function(selector)
         {
             var $popup = this._getPopup(selector);
@@ -128,7 +128,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                 $popup.css(this._getPosition($popup));
             }
         },
-        
+
         _checkScroll: function(popup)
         {
             $dialog = $(popup).find(defaults.dialogClass);
@@ -193,9 +193,9 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                     $win.scrollTop(scroll);
                 }
             }
-            
+
             $body.trigger('popup.close', $popups);
-        
+
             return this;
         },
 
@@ -215,7 +215,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
         hooks: function()
         {
             popup = this;
-            
+
             $body.on('click', defaults.closeClass, function(e) {
                 e.preventDefault ? e.preventDefault() : e.returnValue = false;
                 popup.close();
@@ -239,9 +239,9 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
             $win.on('resize.popup', function() {
                 clearTimeout(resizeTimeout);
-                
+
                 resizeTimeout = setTimeout(function() {
-                    
+
                     $body.find('.popup.is-open').each(function() {
                         if (!defaults.cssPosition)
                         {
@@ -264,7 +264,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
             if (typeof selector !== 'undefined' && selector !== '')
             {
                 var data = data || {}, prop = {}, $popup;
-                
+
                 if (bodyclass)
                 {
                     $body.addClass('popup-open');
@@ -288,9 +288,9 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                         $body.append($popup);
                     }
                 }
-                
+
                 $popup.addClass('visible is-open');
-            
+
                 if (!defaults.cssPosition)
                 {
                     $popup.css(popup._getPosition($popup));
@@ -312,11 +312,11 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                 setTimeout(function(){
                     $popup.addClass('animate');
                     $body.trigger('popup.after_open', $popup);
-                    
+
                     setTimeout(function(){
                         $popup.scrollTop(0);
                     }, 10);
-                    
+
                     if (nested.length)
                     {
                         $body.trigger('popup.init_nested', { popup: $popup, nested: nested });
@@ -332,7 +332,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
         clicks: function(trigger)
         {
             popup = this;
-           
+
             $body.on('click', trigger, function(e) {
                 var overlay = defaults.overlay.enable, bodyclass = defaults.bodyclass, element;
 
@@ -375,7 +375,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
             return this;
         },
-        
+
         open: function(selector, overlay, bodyclass)
         {
             popup = this;
@@ -398,15 +398,15 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                     temp = selector;
                 }
             }
-            
+
             if (temp !== null && temp.indexOf('/') >= 0)
             {
                 nested = temp.split('/');
             }
-            
+
             is_nested = false;
             selector = temp;
-            
+
             if (nested.length)
             {
                 is_nested = true;
@@ -416,6 +416,8 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
             if (typeof selector !== 'undefined' && selector !== null)
             {
+                selector = selector.split('?')[0];
+
                 if (selector.substr(0, 1) == '#')
                 {
                     selector = selector.substr(1);
@@ -424,7 +426,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                 if ($('.popup.is-open').length)
                 {
                     selector_cache = $('.popup.is-open').attr('id');
-                
+
                     if ((is_nested && !nested.length) || (selector !== selector_cache))
                     {
                         popup.close($('.popup.is-open'));
@@ -439,7 +441,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                 {
                     selector = 'tpl-'+selector;
                 }
-                
+
                 if ($('#tmpl-' + selector).length)
                 {
                     selector = 'tmpl-'+selector;
@@ -460,7 +462,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                     popup.show(selector, overlay, bodyclass);
                 }
             }
-    
+
             return this;
         },
 
@@ -483,7 +485,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
             }
 
             notify_timeout = setTimeout(function(){
-                
+
                 noty.removeClass('animate');
 
                 setTimeout(function(){
@@ -494,12 +496,12 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
             }, 5000);
         },
-        
+
         message: function(title, text, btn)
         {
             popup = this;
 
-            temp = $(template(defaults.template.message, {'title': title, 'text': text, 'btn': btn || null }));
+            temp = $(template(defaults.template.message, {'title': title, 'text': text }));
 
             temp.addClass('temp');
 
@@ -509,7 +511,7 @@ $.popup.open('popup-choose-photo-source/nested-tab');
 
             popup.show(temp);
         },
-        
+
         error: function(title, text)
         {
             popup = this;
@@ -539,12 +541,11 @@ $.popup.open('popup-choose-photo-source/nested-tab');
                     }
                 }
             }
-            
+
             this.open();
             this.clicks(trigger);
             this.hooks();
         }
     };
-    
+
 })(jQuery);
- 

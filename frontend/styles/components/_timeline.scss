@@ -8,3 +8,9 @@
         clear: both;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .timeline {
+        padding: 55px 0;
+    }
+}

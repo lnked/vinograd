@@ -20,3 +20,9 @@
         margin-bottom: 0;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .page-subtitle {
+        margin-bottom: 25px;
+    }
+}
