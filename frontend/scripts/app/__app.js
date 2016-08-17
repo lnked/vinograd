@@ -305,7 +305,50 @@
             });
         },
 
+        initClose: function() {
+            $('body').click(function(){
+                if ($('#banner').length) {
+                    var $banner = $('#banner');
+
+                    if ($banner.hasClass('show')) {
+                        $banner.removeClass('animate');
+
+                        setTimeout(function(){
+                            $banner.removeClass('show');
+                        }, 300);
+                    }
+                }
+            });
+        },
+
+        initBanner: function(delay) {
+            var _this = this;
+
+            if ($('#banner').length) {
+                var $banner = $('#banner');
+                
+                if (!$.cookie('hideModal')) {
+                    setTimeout(function(){
+                        $banner.addClass('show');
+                        
+                        setTimeout(function(){
+                            $banner.addClass('animate');
+                        }, 10);
+
+                        _this.initClose();
+
+                    }, delay * 1000)
+                }
+                
+                $.cookie('hideModal', true, {
+                    expires: 7,
+                    path: '/'
+                });
+            }
+        },
+
         init: function() {
+            this.initBanner(10);
             this.initTabs();
             this.initZoom();
             this.initPlans();

@@ -1,0 +1,117 @@
+.banner {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: none;
+    opacity: 0;
+    transition: opacity $a-long-time;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        opacity: 0;
+        background-color: #000;
+        transition: opacity $a-time;
+    }
+
+    &__content {
+        width: 100%;
+        z-index: 10;
+        font-size: 0;
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+        padding-right: 15px;
+        transform: scale(1.1,1.1);
+        transition: transform $a-long-time;
+
+        &:before {
+            content: "";
+            display: block;
+            padding-top: 55.777777778%;
+        }
+    }
+
+    &__image {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        font-size: 0;
+        border: 2px solid #60a972;
+        transform: translateY(-25%);
+        
+        &__src {
+            max-width: 100%;
+            height: auto;    
+        }
+
+        &__close {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            margin-top: -16px;
+            margin-right: -16px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #60a972;
+
+            &:before, &:after {
+                width: 16px;
+                height: 2px;
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -8px;
+                margin-top: -1px;
+                background-color: #60a972;
+                transition: background-color $a-time;
+            }
+
+            &:before {
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+            
+            &:hover {
+                &:before, &:after {
+                    background-color: darken(#409555, 5%);
+                }
+            }
+        }
+    }
+
+    &.show {
+        display: block;
+    }
+
+    &.animate {
+        opacity: 1;
+
+        &:before {
+            opacity: .7;
+        }
+    }
+
+    &.animate &__content {
+        transform: scale(1,1);
+    }
+}

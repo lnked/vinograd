@@ -14,7 +14,7 @@
     }
     
     &_similar {
-        height: $header-height;
+        height: $header-height - 20px;
     }
 
     &__wrapper {
