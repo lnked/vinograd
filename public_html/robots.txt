@@ -7,7 +7,7 @@ User-Agent: Yandex
 Disallow: /fonts/
 Disallow: /images/
 Disallow: /*?utm_source
-Host: жк-виноградъ.рф
+Host: tcc-okna.ru
 
 User-agent: msnbot
 Crawl-delay: 10

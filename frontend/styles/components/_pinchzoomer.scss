@@ -1,0 +1,26 @@
+.pinch-zoom {
+    height: 100%;
+    max-width: 960px;
+    max-height: 100%;
+    position: relative;
+    margin: 0 auto;
+    
+    &:before {
+        content: "";
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &, &__image {
+        width: 100%;
+        -webkit-user-drag: none;
+    }
+
+    .pinch-zoom-container {
+        width: 100%;
+        min-height: 60%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

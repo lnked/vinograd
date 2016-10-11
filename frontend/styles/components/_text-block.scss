@@ -1,0 +1,51 @@
+.text-block {
+    clear: both;
+    padding: 50px 0;
+
+    &__wrapper {
+        @extend %layout;
+    }
+    
+    &__hidden {
+        display: none;
+
+        &.is-show {
+            display: block;
+        }
+    }
+
+    &__more {
+        text-align: center;
+
+        &__link {
+            color: $c-green;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border-bottom: 1px dotted;
+        }
+    }
+
+    p {
+        font-size: 1.6rem;
+        line-height: 1.44;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+
+    ul {
+        margin-left: 15px;
+        margin-bottom: 0;
+        list-style-type: disc;
+
+        li {
+            font-size: 1.6rem;
+            line-height: 1.44;
+
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

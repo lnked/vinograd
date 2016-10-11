@@ -1,0 +1,20 @@
+<template id="tmpl-popup-pinch">
+    <div class="popup _pinch" id="popup-pinch">
+        <div class="popup__overlay"></div>
+        <div class="popup__dialog _pinch">
+            <section class="popup__content _pinch">
+                <b class="popup__close js-popup-close"></b>
+                
+                <article class="popup__body _pinch">
+                    
+                    {{#image}}
+                    <div id="pinchzoom" class="pinch-zoom">
+                        <img id="rect" src="{{image}}" class="pinch-zoom__image j-pinch-zoom" ondragstart="return false" alt="">
+                    </div>
+                    {{/image}}
+
+                </article>
+            </section>
+        </div>
+    </div>
+</template>

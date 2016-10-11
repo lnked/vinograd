@@ -1,0 +1,92 @@
+.porch {
+    clear: both;
+    font-size: 0;
+    text-align: center;
+    margin-bottom: 50px;
+    
+    &__tabs {
+        clear: both;
+        margin-bottom: 15px;
+    }
+
+    &__tab {
+        width: 260px;
+        height: 50px;
+        margin: 0 5px;
+        padding: 0 20px;
+        display: inline-block;
+        vertical-align: middle;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-image: url(/images/tab.png);
+        background-size: auto 50px;
+        transition: opacity $a-time;
+        opacity: .7;
+
+        font-size: 1.4rem;
+        color: $c-green;
+        font-weight: 700;
+        line-height: 48px;
+        text-decoration: none;
+
+        &._current {
+            opacity: 1;
+            color: #000;
+            background-image: url(/images/tab-active.png);
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__frame {
+        height: 530px;
+        padding: 25px;
+        max-width: 960px;
+        text-align: center;
+        margin: 0 auto 20px;
+        border: 4px solid $c-green;
+
+        background: url(/images/rose-of-wind.svg) 10px 10px no-repeat;
+        background-size: 40px 41px;
+
+        &__item {
+            display: none;
+            font-size: 0;
+            line-height: 0;
+            position: relative;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            &__area {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+                z-index: 100;
+                margin: auto;
+                user-select: none;
+            }
+            
+            &__hover {
+                position: absolute;
+                z-index: 50;
+                opacity: 0;
+                transition: opacity $a-time;
+                
+                &._show {
+                    opacity: 1;
+                }
+            }
+
+            &._active {
+                display: inline-block;
+            }
+        }
+    }
+}

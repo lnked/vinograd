@@ -2,12 +2,14 @@
     clear: both;
     font-size: 0;
     margin-bottom: 20px;
+    text-align: center;
 
     &__item {
         width: 25%;
         text-align: center;
         display: inline-block;
         vertical-align: middle;
+        margin-bottom: 20px !important;
 
         &:not(:first-child) {
             padding-left: 15px;

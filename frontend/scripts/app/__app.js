@@ -47,28 +47,34 @@
         },
 
         initBlock: function (selector) {
-            $(selector).magnificPopup({
+            var options = {
                 type: 'image',
                 delegate: 'a.zoom',
                 closeOnContentClick: true,
-                closeBtnInside: false,
+                closeBtnInside: true,
                 fixedContentPos: true,
+                verticalFit: false,
                 mainClass: 'mfp-no-margins mfp-with-zoom',
                 image: {
                     verticalFit: true
-                },
-                gallery: {
-                    enabled:true
                 }
-            });
+            };
+
+            if ($(window).width() >= 768) {
+                options.gallery = {
+                    enabled:true
+                };
+            }
+
+            $(selector).magnificPopup(options);
         },
 
         initZoom: function () {
-
             this.initBlock('.j-gallery');
             this.initBlock('.j-timeline');
             this.initBlock('.j-documents');
             this.initBlock('.j-floors');
+            this.initBlock('.j-plans');
         },
 
         initTabs: function() {
@@ -347,8 +353,90 @@
             }
         },
 
+        initPorch: function() {
+            var element = '', image = '';
+
+            $('body').on('click', '.j-porch-tab', function(e){
+                e.preventDefault();
+                
+                if (!$(this).hasClass('_current')) {
+                    var $porch = $(this).closest('.j-porch'), tab = $(this).data('tab');
+
+                    $porch.find('._current').removeClass('_current');
+                    $porch.find('.j-porch-item._active').removeClass('_active');
+
+                    $porch.find('#porch-tab-' + tab).addClass('_active');
+                    $(this).addClass('_current');
+                }
+                
+                return !1;
+            });
+
+            // Area
+            $('.j-area-item').on('mouseenter', function(e){
+                element = $(this).data('element');
+                if ($(element).length) {
+                    $(element).addClass('_show');
+                }
+            });
+
+            $('.j-area-item').on('mouseleave', function(e){
+                element = $(this).data('element');
+                if ($(element).length) {
+                    $(element).removeClass('_show');
+                }
+            });
+
+            $('.j-area-item').on('click', function(e){
+                e.preventDefault();
+
+                image = $(this).attr('href');
+
+                $.magnificPopup.open({
+                    closeOnContentClick: true,
+                    closeBtnInside: true,
+                    fixedContentPos: true,
+                    items: {
+                        src: '<div class="white-popup"><figure><img class="mfp-img" alt="" src="' + image + '" style="max-height: 500px;"></figure></div>',
+                        type: 'inline'
+                    }
+                });
+
+                return !1;
+            });
+        },
+
+        initGoals: function() {
+            $('body').on('click', '.j-yandex-goal', function() {
+                if ($(this).data('target-name')) {
+                    $.each($(this).data('target-name').split(' '), function(key, value) {
+                        yaCounter38867515.reachGoal($.trim(value));
+                    });
+                }
+            });
+        },
+
+        initShow: function() {
+            $('body').on('click', '.j-show', function(e) {
+                e.preventDefault();
+
+                var href = $(this).attr('href');
+
+                if ($(href).length) {
+                    $(href).addClass('is-show');
+                }
+                
+                $(this).hide();
+
+                return false;
+            });
+        },
+
         init: function() {
-            this.initBanner(10);
+            this.pinchzoom.init();
+            this.initGoals();
+            this.initShow();
+            this.initPorch();
             this.initTabs();
             this.initZoom();
             this.initPlans();

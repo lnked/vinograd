@@ -18,7 +18,8 @@ $.popup.open('popup-choose-photo-source/nested-tab');
             enable: !0,
             element: '#overlay'
         },
-        overlayClickClose: !0,
+        wrapClickClose: !1,
+        overlayClickClose: !1,
         cssPosition: !0,
         bodyclass: !0,
         hashCheck: !0,
@@ -203,12 +204,14 @@ $.popup.open('popup-choose-photo-source/nested-tab');
         {
             popup = this;
 
-            $(defaults.wrapper).on('click.wrapClose', function(e) {
-                if (!$(e.target).closest(defaults.popupClass).length && !$(e.target).hasClass(defaults.triggerClass.substr(1)) && !$(e.target).closest(defaults.triggerClass).length)
-                {
-                    popup.close();
-                }
-            });
+            if (defaults.wrapClickClose) {
+                $(defaults.wrapper).on('click.wrapClose', function(e) {
+                    if (!$(e.target).closest(defaults.popupClass).length && !$(e.target).hasClass(defaults.triggerClass.substr(1)) && !$(e.target).closest(defaults.triggerClass).length)
+                    {
+                        popup.close();
+                    }
+                });
+            }
 
         },
 
