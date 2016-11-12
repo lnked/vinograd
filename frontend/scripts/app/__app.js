@@ -392,15 +392,15 @@
 
                 image = $(this).attr('href');
 
-                $.magnificPopup.open({
-                    closeOnContentClick: true,
-                    closeBtnInside: true,
-                    fixedContentPos: true,
-                    items: {
-                        src: '<div class="white-popup"><figure><img class="mfp-img" alt="" src="' + image + '" style="max-height: 500px;"></figure></div>',
-                        type: 'inline'
-                    }
-                });
+                // $.magnificPopup.open({
+                //     closeOnContentClick: true,
+                //     closeBtnInside: true,
+                //     fixedContentPos: true,
+                //     items: {
+                //         src: '<div class="white-popup"><figure><img class="mfp-img" alt="" src="' + image + '" style="max-height: 500px;"></figure></div>',
+                //         type: 'inline'
+                //     }
+                // });
 
                 return !1;
             });
@@ -432,16 +432,31 @@
             });
         },
 
+        initFancybox: function() {
+            $('.j-pinch-trigger').fancybox({ transition: "none",autoPlay: false, helpers : {buttons  : {}, title: {type: 'inside'}}});
+
+            var $list, list = [ '.j-gallery', '.j-timeline', '.j-documents', '.j-floors', '.j-plans' ], random = '';
+
+            for (var i = list.length - 1; i >= 0; i--) {
+                random = Math.random();
+                $list = $(list[i]).find('.zoom');
+                $list.prop('rel', 'gallery-' + random);
+
+                $list.fancybox({ rel: 'gallery-' + random, transition: "none", slideshow: true, width: "650px", height: "650px" });
+            }
+        },
+
         init: function() {
-            this.pinchzoom.init();
+            // this.pinchzoom.init();
             this.initGoals();
             this.initShow();
             this.initPorch();
             this.initTabs();
-            this.initZoom();
+            // this.initZoom();
             this.initPlans();
             this.initPopup();
             this.initSlider();
+            this.initFancybox();
             this.initSandwich();
             this.initSwitcher();
             this.initLocation();

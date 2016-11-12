@@ -1,0 +1,24 @@
+{
+  "name": "vinograd",
+  "main": "gulpfile.js",
+  "description": "ЖК-Виноград",
+  "homepage": "https://github.com/lnked/vinograd",
+  "authors": [
+    "Edik Bulikyan <ed.proff@gmail.com> (https://github.com/lnked)"
+  ],
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "gulp",
+    "bower"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "timeout": 120000,
+  "dependencies": {}
+}
