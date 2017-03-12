@@ -2,6 +2,10 @@
     font-size: 0;
     position: relative;
 
+    &__cache {
+        display: none;
+    }
+
     &__wrapper {
         margin: 0 -10px;
         overflow: hidden;
@@ -40,8 +44,12 @@
     &__item {
         float: left;
         outline: none;
-        min-height: 165px;
         padding: 0 10px;
+        min-height: 165px;
+
+        &.is-hidden {
+            display: none !important;
+        }
 
         &__image {
             padding: 13px;

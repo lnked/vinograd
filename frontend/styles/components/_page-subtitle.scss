@@ -27,6 +27,28 @@
     &._nm {
         margin-bottom: 0;
     }
+
+    &._sm {
+        margin-bottom: 15px;
+    }
+
+    &._bdb {
+        margin-bottom: 0;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        position: relative;
+
+        &:after {
+            width: 83px;
+            height: 2px;
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            margin-left: -41px;
+            background-color: #bfbfbf;
+        }
+    }
 }
 
 @media only screen and (max-width: 768px) {

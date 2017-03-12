@@ -33,7 +33,7 @@ textarea {
     color: #6a6767;
     font-size: 1.8rem;
     font-weight: 400;
-    border-radius: 2px;
+    border-radius: 0;
     font-family: $font-forms;
     border: 1px solid $c-border-color;
     box-sizing: border-box !important;
@@ -41,8 +41,9 @@ textarea {
     transition: border-color $a-time, color $a-time;
 
     &.error {
-        color: #ff5335;
-        border-color: #ff5335;
+        color: #ff5335 !important;
+        border-color: #ff5335 !important;
+        outline: 2px solid rgba(255, 83, 53, 50%);
     }
 
     &:disabled {

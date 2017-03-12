@@ -1,0 +1,29 @@
+.download {
+    clear: both;
+    font-size: 0;
+    text-align: center;
+    margin-bottom: 45px;
+
+    &__item {
+        margin: 0 15px;
+        display: inline-block;
+        vertical-align: top;
+
+        &__icon {
+            width: 33px;
+            height: 45px;
+            display: block;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: 33px 45px;
+        }
+
+        &__icon--doc {
+            background-image: url(/images/doc.svg);
+        }
+
+        &__icon--pdf {
+            background-image: url(/images/pdf.svg);
+        }
+    }
+}

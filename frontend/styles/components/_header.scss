@@ -12,6 +12,23 @@
         height: 58px;
         background-image: url(/images/fh-shadow.png);
     }
+
+    &__badge {
+        z-index: 100;
+        position: absolute;
+        right: -20px;
+        top: 0;
+        outline: none;
+        display: block;
+        cursor: pointer;
+        
+        &--8-marta {
+            width: 100px;
+            height: 99px;
+            background: url(/images/badge/8-marta.png) 100% 0 no-repeat;
+            background-size: 100px 99px;
+        }
+    }
     
     &_similar {
         height: $header-height - 20px;
@@ -50,6 +67,15 @@
         position: absolute;
         right: 10px;
         top: 48px;
+
+        &__item {
+            display: block;
+            text-align: center;
+
+            &:not(:first-child) {
+                margin-top: 7px;
+            }
+        }
     }
 }
 

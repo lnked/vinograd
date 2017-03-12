@@ -95,9 +95,9 @@ if( !empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_
 				$html .= '</body></html>';
 
 	            $mail = new mMail();
-				$mail->addTo( "ed.proff@gmail.com" );
-				$mail->addTo( "natali93rus@bk.ru" );
-				$mail->addTo( "info@newtime.biz" );
+				$mail->addTo("natali93rus@bk.ru");
+				$mail->addTo("info@vinograd23.ru");
+				$mail->addTo("info@newtime.biz");
 
 				$mail->setSubject( $subject );
 	            $mail->setFrom( 'noreply@vinograd23.ru' );
@@ -144,7 +144,9 @@ if( !empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_
 	            $_SESSION['feedback']['error']['name'] = $empty;
 
 			if(!$text)
-	            $_SESSION['feedback']['error']['text'] = $empty;
+	            $_SESSION['feedback']['error']['message'] = $empty;
+
+	        exit(__debug($_SESSION['feedback']['error']));
 
 	        if( !empty( $_SESSION['feedback']['error'] ) )
 	        {
@@ -214,8 +216,8 @@ if( !empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_
 
 	            $mail = new mMail();
 				$mail->addTo( "ed.proff@gmail.com" );
-				$mail->addTo( "natali93rus@bk.ru" );
-				$mail->addTo( "info@newtime.biz" );
+				// $mail->addTo( "natali93rus@bk.ru" );
+				// $mail->addTo( "info@newtime.biz" );
 
 				$mail->setSubject( $subject );
 	            $mail->setFrom( 'noreply@vinograd23.ru' );

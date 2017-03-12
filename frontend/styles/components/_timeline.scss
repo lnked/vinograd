@@ -6,6 +6,74 @@
 
     &__carousel {
         clear: both;
+        height: 166px;
+        overflow: hidden;
+    }
+
+    &__filter {
+        clear: both;
+        display: none;
+        margin-top: 25px;
+
+        &.is-active {
+            display: block;
+        }
+
+        &__years,
+        &__months {
+            clear: both;
+            font-size: 0;
+            text-align: center;
+        }
+
+        &__years {
+            margin-bottom: 15px;
+
+            &__tab {
+                color: darken(#fff, 10%);
+                height: 26px;
+                margin: 0 10px;
+                padding: 0 7px;
+                font-weight: 600;
+                font-size: 1.8rem;
+                line-height: 28px;
+                display: inline-block;
+                vertical-align: middle;
+                transition: background-color .3s ease-in-out, color .3s ease-in-out;
+
+                &:hover,
+                &.is-current {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+                &.is-current {
+                    background-color: lighten($c-green, 10%);
+                }
+            }
+        }
+
+        &__months {
+            &__tab {
+                display: none;
+                vertical-align: middle;
+                color: lighten($c-green, 50%);
+                font-size: 1.5rem;
+                line-height: 1;
+                padding: 3px;
+                margin: 0 10px;
+
+                &.is-active {
+                    display: inline-block;
+                }
+
+                &.is-current {
+                    color: #000;
+                    text-decoration: none;
+                    background-color: lighten($c-green, 50%);
+                }
+            }
+        }
     }
 }
 

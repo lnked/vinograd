@@ -42,7 +42,6 @@
 
         .c-input,
         .c-textarea {
-            border-radius: 5px;
             border-color: #c2c2c2;
         }
     }
@@ -56,6 +55,10 @@
 
         &._input {
             width: 60%;
+
+            .c-input {
+                border-radius: 5px !important;
+            }
         }
 
         &._button {
