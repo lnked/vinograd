@@ -79,7 +79,7 @@
 
         initZoom: function () {
             this.initBlock('.j-gallery');
-            this.initBlock('.j-timeline');
+            this.initBlock('.j-timeline-slider');
             this.initBlock('.j-documents');
             this.initBlock('.j-floors');
             this.initBlock('.j-plans');
@@ -479,10 +479,14 @@
                 this.data.months = [];
 
                 this.months.find('.j-timeline-months-item').each((key, item) => {
-                    var years = [], temp = $(item).data('if');
+                    var years = [], strings = $(item).data('if') + '';
 
-                    if (typeof temp !== 'undefined' && temp !== '') {
-                        years = parseInt(temp);
+                    if (typeof strings !== 'undefined' && strings !== '') {
+                        years = strings.split(',');
+
+                        for (var x in years) {
+                            years[x] = parseInt(years[x]);
+                        }
                     }
 
                     this.data.months.push({
@@ -515,6 +519,10 @@
                         }, 50);
                     }
                 });
+
+                setTimeout(function() {
+                    $.app.initBlock('.j-timeline-slider');
+                }, 300);
             },
 
             _changeFirstMonth: function()
@@ -531,7 +539,7 @@
                 this.months.find('.j-timeline-months-item').removeClass('is-active');
 
                 $.each(this.data.months, (k, item) => {
-                    if (item.year == this.data.current) {
+                    if (item.year.indexOf(this.data.current) >= 0) {
                         $(item.item).addClass('is-active');
                     }
                 });

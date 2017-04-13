@@ -143,10 +143,11 @@ if( !empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_
 	        if(!$name)
 	            $_SESSION['feedback']['error']['name'] = $empty;
 
+			if(!$phone)
+	            $_SESSION['feedback']['error']['phone'] = $empty;
+
 			if(!$text)
 	            $_SESSION['feedback']['error']['message'] = $empty;
-
-	        exit(__debug($_SESSION['feedback']['error']));
 
 	        if( !empty( $_SESSION['feedback']['error'] ) )
 	        {
