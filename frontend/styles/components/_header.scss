@@ -28,6 +28,34 @@
             background: url(/images/badge/8-marta.png) 100% 0 no-repeat;
             background-size: 100px 99px;
         }
+
+        &--action {
+            top: 10px;
+            right: 10px;
+            width: 140px;
+            height: 160px;
+            font-size: 0;
+            text-indent: -1000px;
+            background: url(/images/badge/lenta.png) 100% 0 no-repeat;
+            background-size: 140px 160px;
+
+            @media (max-width: 780px) {
+                top: 80px;
+                right: 0;
+                left: 0;
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                background: url(/images/badge/lenta-chast.png) 50% 50% repeat-x;
+                background-size: 25px 40px;
+                text-indent: 0;
+                font-size: 1.6rem;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 700;
+            }
+        }
     }
     
     &_similar {
@@ -111,7 +139,8 @@
         }
 
         &__phone {
-            top: 35px;
+            /* top: 35px; */
+            top: 15px;
         }
     }
 }

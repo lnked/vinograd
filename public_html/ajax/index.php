@@ -131,6 +131,118 @@ if( !empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_
 	        }
 	    }
 	}
+	elseif( $controller == 'getprice' ) {
+	    if( count($_POST) )
+	    {
+	        unset( $_SESSION['getprice'] );
+
+	        $phone	= $_SESSION['getprice']['field']['phone'] 	= $_POST['phone'];
+	        $name 	= $_SESSION['getprice']['field']['name'] 	= $_POST['name'];
+
+	        if(!$name)
+	            $_SESSION['getprice']['error']['name'] = $empty;
+
+			if(!$phone)
+	            $_SESSION['getprice']['error']['phone'] = $empty;
+
+	        if( !empty( $_SESSION['getprice']['error'] ) )
+	        {
+	            exit(
+			    	json_encode(
+			    		array(
+			    			'status'	=> false,
+			    			'title'		=> 'Отправка заявки',
+				    		'errors'	=> $_SESSION['getprice']['error']
+			    		)
+		    		)
+		    	);
+	        }
+	        else
+	        {
+				$subject = 'Запрос с сайта (узнать цену)';
+
+	            $m = '';
+
+	            $m .= '<p>Здравствуйте!</p>';
+	            $m .= '<p>Новое сообщение с сайта</p>';
+				$m .= '<p>Дата отправки: <b>'. date( 'd.m.Y H:i:s' ) .'</b></p>';
+
+	            if( $name !== '' )
+	            {
+	                $m .= '<p>Отправитель: '. stripslashes( $name ).'</p>';
+	            }
+
+	            if( $phone !== '' )
+	            {
+	                $m .= '<p>Номер телефона: '. stripslashes( $phone ) .'</p>';
+	            }
+
+	            $html = "";
+				$html .= '<html><body>';
+				$html .= '<table width="100%" cellspacing="0" cellpadding="0" border="0">';
+				$html .= '<tr>';
+				$html .= '<td align="center">';
+				$html .= '<table width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">';
+				$html .= '<tr>';
+				$html .= '<td colspan="3"><img src="http://turbo-sites.ru/images/logo.png" width="164" height="51" /></td>';
+				$html .= '</tr>';
+				$html .= '<tr>';
+				$html .= '<td colspan="3" height="15"></td>';
+				$html .= '</tr>';
+				$html .= '<tr>';
+				$html .= '<td colspan="3" align="center">';
+				$html .= '<table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; line-height: 17px; font-family: sans-serif;">';
+				$html .= '<tr>';
+				$html .= '<td>';
+				$html .= $m;
+				$html .= '</td>';
+				$html .= '</tr>';
+				$html .= '</table>';
+				$html .= '</td>';
+				$html .= '</tr>';
+				$html .= '</table>';
+				$html .= '</td>';
+				$html .= '</tr>';
+				$html .= '</table>';
+				$html .= '</body></html>';
+
+	            $mail = new mMail();
+				$mail->addTo( "ed.proff@gmail.com" );
+				$mail->addTo( "natali93rus@bk.ru" );
+				$mail->addTo( "info@newtime.biz" );
+
+				$mail->setSubject( $subject );
+	            $mail->setFrom( 'noreply@vinograd23.ru' );
+	            $mail->setHtmlBody( iconv( 'utf-8','windows-1251', $html ) );
+
+	            if( $mail->send() )
+	            {
+	                unset( $_SESSION['getprice'] );
+					exit(
+				    	json_encode(
+				    		array(
+				    			'status'	=> true,
+					    		'title'		=> 'Отправка заявки',
+					    		'text'		=> 'Заявка отправлена!'
+				    		)
+			    		)
+			    	);
+	            }
+				else
+	            {
+					exit(
+				    	json_encode(
+				    		array(
+				    			'status'	=> false,
+				    			'title'		=> 'Отправка заявки',
+					    		'text'		=> 'Заявка не отправлена, произошла ошибка!'
+				    		)
+			    		)
+			    	);
+				}
+	        }
+	    }
+	}
 	elseif( $controller == 'sendmessage' ) {
 	    if( count($_POST) )
 	    {
@@ -217,8 +329,8 @@ if( !empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_
 
 	            $mail = new mMail();
 				$mail->addTo( "ed.proff@gmail.com" );
-				// $mail->addTo( "natali93rus@bk.ru" );
-				// $mail->addTo( "info@newtime.biz" );
+				$mail->addTo( "natali93rus@bk.ru" );
+				$mail->addTo( "info@newtime.biz" );
 
 				$mail->setSubject( $subject );
 	            $mail->setFrom( 'noreply@vinograd23.ru' );

@@ -1,13 +1,11 @@
 <div class="layout-wrapper__content _plans j-section clearfix" id="plans-anchor">
     <div class="page-header"><span class="page-header__title">Планировки</span></div>
-    
+
     <div class="genplan">
         <div class="genplan__title">Генплан / Этапы строительства</div>
         <div class="genplan__image">
-            <!-- <div class="genplan__image__rw"></div> -->
             <div class="genplan__image__overlay"></div>
-            <img data-src="/images/genplan-new.jpg" class="genplan__image__src" alt="">
-            <!-- <img data-src="/images/stages-of-construction.jpg" class="genplan__image__src" alt=""> -->
+            <img data-src="/images/genplan-update.jpg" class="genplan__image__src" alt="">
         </div>
     </div>
 
@@ -162,4 +160,26 @@
 
     </ul>
 
+</div>
+
+<div class="layout-wrapper__content _plans j-section clearfix">
+    <div class="page-header"><span class="page-header__title">Узнать стоимость квартиры</span></div>
+    
+    <div class="get-price">
+        <div class="get-price__content">
+            <form action="/ajax/getprice" method="post" class="form form-ajax form-reset">
+                <div class="form__ln">
+                    <input name="name" placeholder="Имя" class="c-input">
+                </div>
+
+                <div class="form__ln">
+                    <input name="phone" placeholder="Телефон" class="c-input j-phone-mask">
+                </div>
+
+                <div class="form__button">
+                    <button type="submit" class="button button_submit button_green j-yandex-goal" data-target-name="obratnaja-svjaz">ОТПРАВИТЬ ЗАПРОС</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

@@ -597,6 +597,7 @@
         init: function() {
             $.app.layzr.init();
             this.timeline.init();
+            this.banner.init();
             this.initGoals();
             this.initShow();
             this.initPorch();
