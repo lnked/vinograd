@@ -1,32 +1,107 @@
 const src = './frontend/';
 const app = './public_html/';
-const markup = '';
+const markup = 'markup/';
+const mainPage = 'index.html';
 
 module.exports.app  = app;
 
 module.exports.src  = src;
 
 module.exports.tasks = {
+    'pug': {
+        src: [src + 'template/**/*.pug', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
+        app: app + markup
+    },
+
     'template': {
-        src: [src + 'template/**/*.html', '!' + src + 'template/**/*.mustache', '!' + src + 'template/**/*.template', '!' + src + 'template/**/*.tpl', '!' + src + 'template/**/_*.*'],
+        src: [src + 'template/**/*.html', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
         app: app + markup
     },
 
     'scripts': {
+        gzip: false,
         path: src + 'scripts',
         ignore: '!' + src + 'scripts/**/!_*.*',
         app: app + 'js',
         bower: {
             config: './.bowerrc',
             path: src + 'vendors',
-            json: './bower.json'
+            json: './bower.json',
+            overrides: {
+                "jquery": {
+                    "main": "dist/jquery.min.js"
+                },
+                "axios": {
+                    "main": "dist/axios.min.js"
+                },
+                "mousetrap": {
+                    "main": "mousetrap.min.js"
+                },
+                "cleave.js": {
+                    "main": [
+                        "dist/cleave.min.js",
+                        "dist/addons/cleave-phone.ru.js"
+                    ]
+                },
+                "gsap": {
+                    "main": [
+                        "src/minified/TweenLite.min.js",
+                        "src/minified/TimelineLite.min.js"
+                    ]
+                },
+                "svg4everybody": {
+                    "main": "dist/svg4everybody.min.js"
+                },
+                "Template7": {
+                    "main": "dist/template7.min.js"
+                },
+                "react": {
+                    "main": [
+                        "react.min.js",
+                        "react-dom.min.js"
+                    ]
+                },
+                "zepto": {
+                    "main": "zepto.min.js"
+                },
+                "store-js": {
+                    "main": "store.min.js"
+                },
+                "cookie": {
+                    "main": "cookie.min.js"
+                },
+                "reflux": {
+                    "main": "dist/reflux.min.js"
+                }
+            }
         }
+    },
+    
+    'webpack': {
+        gzip: false,
+        path: src + 'scripts',
+        src: [src + 'scripts/*.js', src + 'scripts/**/*.jsx', '!' + src + 'scripts/_*.*', '!' + src + 'scripts/**/_*.*'],
+        app: app + 'webpack'
     },
 
     'styles': {
+        gzip: false,
         path: [src + 'styles'],
         src: [src + 'styles/*.scss', src + 'styles/**/*.scss', '!' + src + 'styles/_*.*', '!' + src + 'styles/**/_*.*'],
-        app: app + 'css'
+        app: app + 'css',
+        html: markup,
+        browsers: [
+            'last 2 version',
+            'ie >= 8',
+            'ie_mob >= 10',
+            'ff >= 30',
+            'chrome >= 34',
+            'safari >= 5',
+            'opera >= 12.1',
+            'ios >= 6',
+            'android >= 2.3',
+            'bb >= 10'
+        ]
     },
 
     'images': {
@@ -48,7 +123,7 @@ module.exports.tasks = {
         src: src + 'fonts/**/*.{woff2,woff,ttf,eot,svg}',
         app: app + 'fonts'
     },
-    
+
     'misc': {
         src: src + 'misc/**/*.*',
         app: app
@@ -75,26 +150,35 @@ module.exports.tasks = {
         style: '_sprite.scss'
     },
 
-    'extras': {},
-    
     'before_build': {},
     
     'deploy': {
-        app: app + '/**/*'
+        app: app + '**/*'
+    },
+    
+    'sync': {
+        app: app + '**/*',
+        root: app,
+        port: 22,
+        username: 'root',
+        hostname: '',
+        destination: ''
     },
     
     'webserver': {
         app: app,
         server: {
             port: 3004,
+            notify: false,
             server: {
                 baseDir: app,
-                index: 'index.html'
+                index: markup + mainPage
             },
             browser: [
                 "google chrome", // "firefox"
             ]
-        }
+        },
+        open: true
     },
     
     'screenshot': [
@@ -123,6 +207,7 @@ module.exports.tasks = {
     
     'watch': {
         tasks: {
+            pug:        [src + 'template/*.pug', src + 'template/**/*.pug', src + 'template/**/**/*.pug', src + 'template/**/_*.*'],
             template:   [src + 'template/*.html', src + 'template/**/*.html', src + 'template/**/**/*.html', src + 'template/**/_*.*'],
             scripts:    [src + 'scripts/**/*.{js,jsx,coffee}'],
             video:      [src + 'video/**/*.*'],
@@ -143,6 +228,14 @@ module.exports.tasks = {
         host: 'ftp server host',
         uploadPath: 'target path'
     },
+    
+    'sftp': {
+        host: 'website.com',
+        user: 'johndoe',
+        pass: '1234',
+        remotePath: '1234',
+        remotePlatform: 'unix'
+    },
 
     'tinypng': ['eGm6p86Xxr4aQ3H7SvfoogEUKOwgBQc3'],
 
@@ -156,7 +249,7 @@ module.exports.tasks = {
         base: app,
 
         // HTML source file 
-        src: 'index.html',
+        src: mainPage,
 
         // Your CSS Files (optional) 
         css: [app + 'css/main.min.css'],
