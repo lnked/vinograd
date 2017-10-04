@@ -7,44 +7,45 @@ let app = app || {};
 
         fancybox: function(selector)
         {
-            // if (typeof selector !== 'undefined' && $(selector).length) {
+            const options = {
+                helpers: {
+                    overlay: {
+                        locked: false
+                    },
+                    title: {
+                        type: 'inside'
+                    },
+                    buttons: {}
+                },
+                width: "650px",
+                height: "650px",
+                autoPlay: false,
+                slideshow: true,
+                transition: "none"
+            };
 
-            // } else {
-            //     var $list, list = [ '.j-gallery', '.j-timeline', '.j-documents', '.j-floors', '.j-plans' ], random = '';
+            if (typeof selector !== 'undefined' && $(selector).length)
+            {
+                var $list, list = [ '.j-gallery', '.j-timeline', '.j-documents', '.j-floors', '.j-plans' ], random = '';
 
-            //     for (var i = list.length - 1; i >= 0; i--) {
-            //         random = Math.random();
-            //         $list = $(list[i]).find('.zoom');
-            //         $list.prop('rel', 'gallery-' + random);
+                for (var i = list.length - 1; i >= 0; i--) {
+                    random = Math.random();
 
-            //         $list.fancybox({
-            //             helpers: {
-            //                 overlay: {
-            //                     locked: true
-            //                 }
-            //             },
-            //             width: "650px",
-            //             height: "650px",
-            //             rel: 'gallery-' + random,
-            //             transition: "none",
-            //             slideshow: true
-            //         });
-            //     }
-            // }
+                    $list = $(list[i]).find('.zoom');
+                    $list.prop('rel', 'gallery-' + random);
 
-            // $('.j-pinch-trigger').fancybox({
-            //     transition: "none",
-            //     autoPlay: false,
-            //     helpers : {
-            //         title: {
-            //             type: 'inside'
-            //         },
-            //         overlay: {
-            //             locked: true
-            //         },
-            //         buttons  : {}
-            //     }
-            // });
+                    const params = Object.assign(options, {
+                        rel: 'gallery-' + random,
+                    });
+
+                    $list.fancybox(params);
+                }
+
+            } else {
+                $(".zoom").fancybox(options);
+            }
+
+            $('.j-pinch-trigger').fancybox(options);
         },
 
         init: function()
