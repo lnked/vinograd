@@ -30,7 +30,7 @@
         width: 100%;
         z-index: 10;
         font-size: 0;
-        max-width: 640px;
+        max-width: 770px;
         margin: 0 auto;
         position: relative;
         text-align: center;
@@ -41,16 +41,17 @@
         &:before {
             content: "";
             display: block;
-            padding-top: 55.777777778%;
+            padding-top: 59.1616766467%;
         }
     }
 
     &__image {
         position: absolute;
         left: 0;
-        top: 50%;
+        /* top: 50%; */
+        top: 60px;
         font-size: 0;
-        transform: translateY(-25%);
+        /* transform: translateY(-25%); */
         // border: 2px solid #60a972;
         
         &__src {

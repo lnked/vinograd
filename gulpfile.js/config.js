@@ -1,6 +1,6 @@
 const src = './frontend/';
 const app = './public_html/';
-const markup = 'markup/';
+const markup = '/';
 const mainPage = 'index.html';
 
 module.exports.app  = app;
@@ -29,7 +29,7 @@ module.exports.tasks = {
             json: './bower.json',
             overrides: {
                 "jquery": {
-                    "main": "dist/jquery.min.js"
+                    "main": "jquery.min.js"
                 },
                 "axios": {
                     "main": "dist/axios.min.js"

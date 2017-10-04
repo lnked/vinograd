@@ -163,9 +163,14 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "gulp --server",
+    "start": "gulp",
     "build": "gulp build",
     "deploy": "gulp deploy",
+    "template": "gulp template && gulp pug",
+    "styles": "gulp styles",
+    "scripts": "gulp scripts",
+    "images": "gulp images && gulp favicon",
+    "misc": "gulp fonts && gulp json && gulp misc",
     "clean": "rm -rf ./public_html"
   },
   "repository": {
