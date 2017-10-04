@@ -1,8 +1,8 @@
 {
-  "name": "vinograd",
+  "name": "skeleton",
   "main": "gulpfile.js",
-  "description": "ЖК-Виноград",
-  "homepage": "https://github.com/lnked/vinograd",
+  "description": "Web starter kit",
+  "homepage": "https://github.com/lnked/skeleton",
   "authors": [
     "Edik Bulikyan <ed.proff@gmail.com> (https://github.com/lnked)"
   ],
@@ -21,6 +21,11 @@
   ],
   "timeout": 120000,
   "dependencies": {
-    "jquery": "1.9.1"
+    "cleave.js": "0.9.2",
+    "jquery": "3.1.1",
+    "cookie": "1.2.1",
+    "Template7": "template7#1.2.3",
+    "fancybox": "3.1.20",
+    "smoothscroll-for-websites": "1.4.6"
   }
 }

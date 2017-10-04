@@ -1,0 +1,14 @@
+%button {
+    padding-top: 0;
+    padding-bottom: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    user-select: none;
+    text-decoration: none;
+    display: inline-block;
+    -webkit-appearance: none;
+    background-color: transparent;
+    transition: border-color $a-time, background-color $a-time, color $a-time;
+}

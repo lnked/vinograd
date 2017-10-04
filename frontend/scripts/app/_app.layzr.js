@@ -1,13 +1,11 @@
-;(function ($) {
+let app = app || {};
+
+((body => {
     "use strict";
 
-    var _this;
+    app.layzr = {
 
-    $.app = $.app || {};
-
-    $.app.layzr = {
-
-        init: function(config)
+        init: function()
         {
             $(window).lazyLoadXT({
                 edgeY:  200,
@@ -17,4 +15,4 @@
 
     };
 
-})(jQuery);
+}))(document.body);

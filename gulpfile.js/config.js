@@ -1,6 +1,6 @@
 const src = './frontend/';
 const app = './public_html/';
-const markup = '/';
+const markup = './';
 const mainPage = 'index.html';
 
 module.exports.app  = app;
@@ -19,75 +19,22 @@ module.exports.tasks = {
     },
 
     'scripts': {
-        gzip: false,
+        gzip: true,
         path: src + 'scripts',
         ignore: '!' + src + 'scripts/**/!_*.*',
-        app: app + 'js',
-        bower: {
-            config: './.bowerrc',
-            path: src + 'vendors',
-            json: './bower.json',
-            overrides: {
-                "jquery": {
-                    "main": "jquery.min.js"
-                },
-                "axios": {
-                    "main": "dist/axios.min.js"
-                },
-                "mousetrap": {
-                    "main": "mousetrap.min.js"
-                },
-                "cleave.js": {
-                    "main": [
-                        "dist/cleave.min.js",
-                        "dist/addons/cleave-phone.ru.js"
-                    ]
-                },
-                "gsap": {
-                    "main": [
-                        "src/minified/TweenLite.min.js",
-                        "src/minified/TimelineLite.min.js"
-                    ]
-                },
-                "svg4everybody": {
-                    "main": "dist/svg4everybody.min.js"
-                },
-                "Template7": {
-                    "main": "dist/template7.min.js"
-                },
-                "react": {
-                    "main": [
-                        "react.min.js",
-                        "react-dom.min.js"
-                    ]
-                },
-                "zepto": {
-                    "main": "zepto.min.js"
-                },
-                "store-js": {
-                    "main": "store.min.js"
-                },
-                "cookie": {
-                    "main": "cookie.min.js"
-                },
-                "reflux": {
-                    "main": "dist/reflux.min.js"
-                }
-            }
-        }
-    },
-    
-    'webpack': {
-        gzip: false,
-        path: src + 'scripts',
-        src: [src + 'scripts/*.js', src + 'scripts/**/*.jsx', '!' + src + 'scripts/_*.*', '!' + src + 'scripts/**/_*.*'],
-        app: app + 'webpack'
+        app: app + 'js'
     },
 
     'styles': {
-        gzip: false,
-        path: [src + 'styles'],
-        src: [src + 'styles/*.scss', src + 'styles/**/*.scss', '!' + src + 'styles/_*.*', '!' + src + 'styles/**/_*.*'],
+        gzip: true,
+        path: src + 'styles',
+        src: [
+            src + 'styles/*.scss',
+            src + 'styles/**/*.scss',
+            '!' + src + 'styles/_*.*',
+            '!' + src + 'styles/**/_*.*',
+            '!' + src + 'components/**/_*.*'
+        ],
         app: app + 'css',
         html: markup,
         browsers: [
@@ -125,7 +72,7 @@ module.exports.tasks = {
     },
 
     'misc': {
-        src: src + 'misc/**/*.*',
+        src: [src + 'misc/**/.*', src + 'misc/**/*.*'],
         app: app
     },
     
@@ -180,7 +127,7 @@ module.exports.tasks = {
         },
         open: true
     },
-    
+
     'screenshot': [
         '320x480',
         '480x320',
@@ -204,17 +151,17 @@ module.exports.tasks = {
 
         '1920x1080'
     ],
-    
+
     'watch': {
         tasks: {
-            pug:        [src + 'template/*.pug', src + 'template/**/*.pug', src + 'template/**/**/*.pug', src + 'template/**/_*.*'],
-            template:   [src + 'template/*.html', src + 'template/**/*.html', src + 'template/**/**/*.html', src + 'template/**/_*.*'],
+            template:   [src + 'template/**/*.html', src + 'template/**/_*.*'],
             scripts:    [src + 'scripts/**/*.{js,jsx,coffee}'],
             video:      [src + 'video/**/*.*'],
             files:      [src + 'files/**/*.*'],
             images:     [src + 'images/**/*.*'],
             favicon:    [src + 'favicon/**/*.*'],
             fonts:      [src + 'fonts/**/*.*'],
+            misc:       [src + 'misc/**/*.*'],
             json:       [src + 'json/**/*.json'],
             styles:     [src + 'styles/**/*.css', src + 'styles/**/*.scss'],
             svgstore:   [src + 'svgstore/**/*.svg']

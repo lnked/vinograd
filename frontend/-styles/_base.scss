@@ -1,0 +1,53 @@
+* {
+    -webkit-touch-callout: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+    
+    &, &:before, &:after {
+        box-sizing: border-box;
+    }
+}
+
+html, body { height: 100%; }
+
+html {
+    quotes: "“" "”";
+    overflow-x: hidden;
+    font-size: $font-base;
+    font-family: $font-family;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    color: $c-text;
+    min-width: 320px;
+    line-height: 1.42857143;
+    font-kerning: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $c-body-background;
+}
+
+/*
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: -moz-scrollbars-none;
+    overflow-style: none;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+*/
+
+body, input, textarea, select, button {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern','onum','liga';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    text-align: left;
+}

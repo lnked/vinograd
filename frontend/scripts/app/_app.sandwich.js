@@ -1,17 +1,17 @@
-;(function ($) {
+var app = app || {};
+
+;(function(body){
     "use strict";
 
     var _this;
 
-    $.app = $.app || {};
-
-    $.app.sandwich = {
+    app.sandwich = {
 
         config: {
             keyHooks: !1,
             selector: '.js-sandwich-menu',
             wrapper: '.layout-wrapper',
-            overlay: '.overlay'
+            overlay: '#menu-overlay'
         },
 
         extend: function(config)
@@ -51,18 +51,20 @@
         {
             if ($('body').hasClass('page-visible'))
             {
+                $('body').removeClass('page-open');
+
                 setTimeout(function(){
                     $('body').removeClass('page-visible');
-                }, 10);
+                }, 200);
             }
             else
             {
+                $('body').addClass('page-open');
+
                 setTimeout(function(){
                     $('body').addClass('page-visible');
                 }, 10);
             }
-
-            $('body').toggleClass('page-open');
 
             var visibility = 'visible';
 
@@ -105,15 +107,18 @@
             });
         },
 
-        init: function(config)
+        init: function()
         {
-            this.extend(config);
-            
+            this.extend({
+                keyHooks: !0,
+                selector: '.js-sandwich-menu',
+                wrapper: '.layout-wrapper',
+                overlay: '#menu-overlay'
+            });
+
             this.sandwichTrigger();
             this.overlayTrigger();
         }
-
     };
 
-})(jQuery);
- 
+})(document.body);
