@@ -1,0 +1,53 @@
+.action-sticker {
+    width: 93px;
+    height: 65px;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: fixed;
+    left: 0;
+    top: 180px;
+    z-index: 1200;
+    line-height: 52px;
+    background: url(/images/action.svg) 0 0 no-repeat;
+    background-size: 93px 65px;
+
+    &__text {
+        width: 100%;
+        color: #d9426b;
+        font-size: 1.7rem;
+        font-weight: 900;
+        line-height: 38px;
+        text-align: center;
+        display: inline-block;
+        vertical-align: bottom;
+        transform: rotate(-15deg);
+
+        @media (max-width: 480px) {
+            transform: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        position: absolute;
+        left: auto;
+        right: 0;
+        top: 0;
+        z-index: 3;
+        width: auto;
+        height: 46px;
+        padding: 0 10px;
+        line-height: 44px;
+        background: $c-green;
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 50%;
+            border-style: solid;
+            border-width: 7px 100px 0 0px;
+            border-color: $c-green transparent transparent transparent;
+        }
+    }
+}

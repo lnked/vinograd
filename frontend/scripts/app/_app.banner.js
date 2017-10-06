@@ -24,18 +24,30 @@ let app = app || {};
 
         make: function(delay)
         {
-            var _this = this;
+            const _this = this;
+
+            const close = function ($b) {
+                $b.removeClass('animate');
+
+                setTimeout(() => {
+                    $b.removeClass('show');
+                }, 400);
+            }
 
             if ($('#banner-new-action').length) {
-                var $banner = $('#banner-new-action');
+                const $banner = $('#banner-new-action');
+
+                $(document).keyup(function(e) {
+                    if (e.keyCode == 27) {
+                        if ($banner.hasClass('show')) {
+                            close($banner);
+                        }
+                    }
+                });
 
                 $banner.on('click', '.banner__image__close', function(e) {
                     e.preventDefault();
-                    $banner.removeClass('animate');
-
-                    setTimeout(function(){
-                        $banner.removeClass('show');
-                    }, 400);
+                    close($banner);
                 });
 
                 setTimeout(function(){

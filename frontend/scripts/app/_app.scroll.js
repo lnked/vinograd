@@ -5,8 +5,9 @@ let app = app || {};
 
     app.scroll = {
         init() {
-            SmoothScroll({
-                stepSize: 50
+            $('html').scrollWithEase({
+                "stepSize": 200,
+                "animationTime": 500
             });
         }
     };
