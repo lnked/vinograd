@@ -1,6 +1,13 @@
-img[data-src] {
-    opacity: 0;
+/*
+.lazy {
+    opacity: 1;
+    transition: opacity 0.3s;
+
+    &[data-src] {
+        opacity: 0;
+    }
 }
+*/
 
 .fade {
     animation-name: fade;

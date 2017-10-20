@@ -40,13 +40,13 @@
 
                     <div class="popup__layout">
 
-                        {{#title}}
+                        {{#if title}}
                             <div class="page-header"><span class="page-header__title _small">{{title}}</span></div>
-                        {{/title}}
+                        {{/if}}
 
-                        {{#image}}
+                        {{#if image}}
                             <img src="{{image}}" width="80%" class="popup__layout__image" alt="">
-                        {{/image}}
+                        {{/if}}
 
                     </div>
 
@@ -66,15 +66,15 @@
 
                     <div class="popup__layout">
 
-                        {{#title}}
+                        {{#if title}}
                             <div class="page-header"><span class="page-header__title _small">{{title}}</span></div>
-                        {{/title}}
+                        {{/if}}
 
-                        {{#text}}
+                        {{#if text}}
                         <div class="popup__message _success clearfix">
                             {{text}}
                         </div>
-                        {{/text}}
+                        {{/if}}
 
                     </div>
 
@@ -94,15 +94,15 @@
 
                     <div class="popup__layout">
 
-                        {{#title}}
+                        {{#if title}}
                             <div class="page-header"><span class="page-header__title _small">{{title}}</span></div>
-                        {{/title}}
+                        {{/if}}
 
-                        {{#text}}
+                        {{#if text}}
                         <div class="popup__message _error clearfix">
                             {{text}}
                         </div>
-                        {{/text}}
+                        {{/if}}
 
                     </div>
 

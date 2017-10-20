@@ -6,8 +6,8 @@ let app = app || {};
     app.scroll = {
         init() {
             $('html').scrollWithEase({
-                "stepSize": 200,
-                "animationTime": 500
+                "stepSize": 100,
+                "animationTime": 1000
             });
         }
     };

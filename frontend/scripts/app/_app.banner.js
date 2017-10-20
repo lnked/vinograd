@@ -37,7 +37,7 @@ let app = app || {};
             if ($('#banner-new-action').length) {
                 const $banner = $('#banner-new-action');
 
-                $(document).keyup(function(e) {
+                $(document).on('keyup', function(e) {
                     if (e.keyCode == 27) {
                         if ($banner.hasClass('show')) {
                             close($banner);

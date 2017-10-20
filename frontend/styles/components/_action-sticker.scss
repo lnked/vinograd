@@ -26,28 +26,4 @@
             transform: none;
         }
     }
-
-    @media (max-width: 480px) {
-        position: absolute;
-        left: auto;
-        right: 0;
-        top: 0;
-        z-index: 3;
-        width: auto;
-        height: 46px;
-        padding: 0 10px;
-        line-height: 44px;
-        background: $c-green;
-
-        &:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 100%;
-            width: 50%;
-            border-style: solid;
-            border-width: 7px 100px 0 0px;
-            border-color: $c-green transparent transparent transparent;
-        }
-    }
 }

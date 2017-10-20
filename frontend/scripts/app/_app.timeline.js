@@ -26,7 +26,7 @@ let app = app || {};
                 $('#timeline-carousel').slick({
                     lazyLoad: 'ondemand',
                     dots: false,
-                    infinite: true,
+                    infinite: false,
                     draggable: true,
                     speed: 259,
                     slidesToShow: 4,
@@ -109,7 +109,10 @@ let app = app || {};
             var count = $('#timeline-cache').find('.carousel__item.is-year-'+ year +'.is-month-'+month).length;
 
             $('#timeline-cache').find('.carousel__item.is-year-'+ year +'.is-month-'+month).each(function(k, item) {
-                $('#timeline-carousel').append($(this).clone());
+
+                const $item = $(this).clone();
+
+                $('#timeline-carousel').append($item);
 
                 if ((k+1) == count) {
                     setTimeout(function() {

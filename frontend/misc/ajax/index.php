@@ -95,6 +95,7 @@ if( !empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_
 				$html .= '</body></html>';
 
 	            $mail = new mMail();
+
 				$mail->addTo("natali93rus@bk.ru");
 				$mail->addTo("info@vinograd23.ru");
 				$mail->addTo("info@newtime.biz");

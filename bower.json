@@ -24,11 +24,10 @@
     "cleave.js": "0.9.2",
     "jquery": "3.1.1",
     "cookie": "1.2.1",
-    "Template7": "template7#1.2.3",
     "slick-carousel": "1.8.1",
     "fancybox": "2.1.6",
     "scroll-with-ease": "1.0.0",
     "intersection-observer-polyfill": "0.1.0",
-    "lozad": "lodaz#undefined"
+    "Template7": "template7#1.2.5"
   }
 }

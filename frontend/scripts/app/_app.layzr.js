@@ -1,29 +1,18 @@
-let app = app || {};
+// let app = app || {};
 
-((body => {
-    "use strict";
+// ((body => {
+//     "use strict";
 
-    app.layzr = {
+//     app.layzr = {
 
-        init: function()
-        {
-            lozad('img[data-src]', {
-                load: function(el) {
-                    el.src = el.dataset.src;
+//         init: function()
+//         {
+//             $('.lazy').lazyLoadXT({
+//                 edgeY:  200,
+//                 srcAttr: 'data-src'
+//             });
+//         }
 
-                    el.onload = function() {
-                        el.classList.add('fade')
-                        el.removeAttribute('data-src');
-                    }
-                }
-            }).observe();
+//     };
 
-            // $(window).lazyLoadXT({
-            //     edgeY:  200,
-            //     srcAttr: 'data-src'
-            // });
-        }
-
-    };
-
-}))(document.body);
+// }))(document.body);
