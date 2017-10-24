@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * CELEBRO.CMS (https://cms.celebro.ru)
+ * @copyright Copyright (c) CELEBRO lab. (https://celebro.ru)
+ * @license http://cms.celebro.ru/license.txt
+ * https://github.com/lnked/skeleton
+ */
+
 require("./utils/env.js");
 
 const $             = require('gulp-load-plugins')({ pattern: ['gulp-*', 'gulp.*', 'postcss-*'] });
@@ -19,7 +26,8 @@ for (let task_name in config.tasks) {
 
 gulp.task('build',
     gulp.series(
-        'before_build', gulp.parallel('template', 'pug', 'styles', 'scripts', 'images', 'favicon', 'fonts', 'json', 'misc')
+        // 'template', 'pug',
+        'before_build', gulp.parallel('nunjucks', 'styles', 'scripts', 'images', 'favicon', 'fonts', 'json', 'misc')
     )
 );
 
