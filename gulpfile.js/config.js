@@ -29,14 +29,16 @@ module.exports.tasks = {
         gzip: true,
         path: src + 'styles',
         src: [
-            src + 'styles/*.scss',
-            src + 'styles/**/*.scss',
+            src + 'styles/*.{sass,scss}',
+            src + 'styles/**/*.{sass,scss}',
             '!' + src + 'styles/_*.*',
             '!' + src + 'styles/**/_*.*',
             '!' + src + 'components/**/_*.*'
         ],
         app: app + 'css',
         html: markup,
+        scripts: src + 'js',
+        template: app,
         browsers: [
             'last 2 version',
             'ie >= 8',
@@ -76,7 +78,7 @@ module.exports.tasks = {
         src: [src + 'misc/**/.*', src + 'misc/**/*.*'],
         app: app
     },
-    
+
     'json': {
         src: src + 'json/**/*.*',
         app: app + 'json'
@@ -86,7 +88,7 @@ module.exports.tasks = {
         src: src + 'favicon/**/*.*',
         app: app + 'favicon'
     },
-    
+
     'svgstore': {
         src: src + 'svgstore/**/*.svg',
         path: src + 'template/components/',
@@ -99,11 +101,11 @@ module.exports.tasks = {
     },
 
     'before_build': {},
-    
+
     'deploy': {
         app: app + '**/*'
     },
-    
+
     'sync': {
         app: app + '**/*',
         root: app,
@@ -112,7 +114,7 @@ module.exports.tasks = {
         hostname: '',
         destination: ''
     },
-    
+
     'webserver': {
         app: app,
         server: {
@@ -148,7 +150,7 @@ module.exports.tasks = {
         '768x1024',
         '1024x768',
 
-        '1280x1024', 
+        '1280x1024',
 
         '1920x1080'
     ],
@@ -176,7 +178,7 @@ module.exports.tasks = {
         host: 'ftp server host',
         uploadPath: 'target path'
     },
-    
+
     'sftp': {
         host: 'website.com',
         user: 'johndoe',
@@ -188,18 +190,18 @@ module.exports.tasks = {
     'tinypng': ['eGm6p86Xxr4aQ3H7SvfoogEUKOwgBQc3'],
 
     'critical': {
-        // Inline the generated critical-path CSS 
-        // - true generates HTML 
-        // - false generates CSS 
+        // Inline the generated critical-path CSS
+        // - true generates HTML
+        // - false generates CSS
         inline: false,
 
-        // Your base directory 
+        // Your base directory
         base: app,
 
-        // HTML source file 
+        // HTML source file
         src: mainPage,
 
-        // Your CSS Files (optional) 
+        // Your CSS Files (optional)
         css: [app + 'css/main.min.css'],
 
         dimensions: [{
@@ -210,20 +212,20 @@ module.exports.tasks = {
             height: 900
         }],
 
-        // Target for final HTML output. 
-        // use some css file when the inline option is not set 
+        // Target for final HTML output.
+        // use some css file when the inline option is not set
         dest: app + 'css/critical.css',
 
-        // Minify critical-path CSS when inlining 
+        // Minify critical-path CSS when inlining
         minify: true,
 
-        // Extract inlined styles from referenced stylesheets 
+        // Extract inlined styles from referenced stylesheets
         extract: true,
 
-        // ignore css rules 
+        // ignore css rules
         ignore: ['font-face'],
 
-        // overwrite default options 
+        // overwrite default options
         ignoreOptions: {}
     }
 }
