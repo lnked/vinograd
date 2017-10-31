@@ -13,10 +13,10 @@ module.exports.tasks = {
     //     app: app + markup
     // },
 
-    // 'template': {
-    //     src: [src + 'template/**/*.html', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
-    //     app: app + markup
-    // },
+    'template': {
+        src: [src + 'template/**/*.html', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
+        app: app + markup
+    },
 
     'nunjucks': {
         src: [src + 'template/**/*.html', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
