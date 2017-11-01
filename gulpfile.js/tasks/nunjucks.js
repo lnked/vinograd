@@ -25,6 +25,11 @@ module.exports = function(config) {
 
             .pipe($.frontMatter({ property: 'data' }))
 
+            .pipe($.fileInclude({
+                prefix: '@@',
+                basepath: '@file'
+            }))
+
             .pipe($.nunjucksRender({
                 path: [ config.path ],
                 PRODUCTION: global.is.build
