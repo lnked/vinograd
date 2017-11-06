@@ -7,9 +7,28 @@ let app = app || {};
 
         trigger: function()
         {
-            $('body').on('click', '.j-yandex-goal', function() {
-                if ($(this).data('target-name')) {
-                    $.each($(this).data('target-name').split(' '), function(key, value) {
+            $('body').on('click', '#roistat-lh-submit', function(e) {
+                yaCounter38867515.reachGoal('Callback');
+                ga('send', 'event', 'forma', 'Callback');
+            });
+
+            $('body').on('click', '.j-goal', function() {
+                let target = false;
+
+                if ($(this).data('target-name'))
+                {
+                    target = $(this).data('target-name');
+                }
+
+                if ($(this).data('ga-name'))
+                {
+                    target = $(this).data('ga-name');
+                }
+
+                if (target)
+                {
+                    $.each(target.split(' '), function(key, value) {
+                        ga('send', 'event', 'forma', $.trim(value));
                         yaCounter38867515.reachGoal($.trim(value));
                     });
                 }
