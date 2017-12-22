@@ -13,12 +13,12 @@ module.exports.tasks = {
     //     app: app + markup
     // },
 
-    'template': {
-        src: [src + 'template/**/*.html', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
-        app: app + markup
-    },
+    // 'template': {
+    //     src: [src + 'template/**/*.html', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
+    //     app: app + markup
+    // },
 
-    'nunjucks': {
+    'template': {
         src: [src + 'template/**/*.html', '!' + src + 'template/**/*.template', '!' + src + 'template/**/_*.*'],
         path: src + 'template',
         app: app + markup
@@ -81,7 +81,7 @@ module.exports.tasks = {
     },
 
     'misc': {
-        src: [src + 'misc/**/.*', src + 'misc/**/*.*'],
+        src: [src + 'misc/*.*', src + 'misc/**/*.*'],
         app: app
     },
 
@@ -163,9 +163,7 @@ module.exports.tasks = {
 
     'watch': {
         tasks: {
-            // template:   [src + 'template/**/*.html', src + 'template/**/_*.*'],
-            // pug:        [src + 'template/**/*.pug', src + 'template/**/_*.*'],
-            nunjucks:   [src + 'template/**/*.html', src + 'template/**/_*.*'],
+            template:   [src + 'template/**/*.html', src + 'template/**/_*.*'],
             scripts:    [src + 'scripts/**/*.{js,jsx,coffee}'],
             video:      [src + 'video/**/*.*'],
             files:      [src + 'files/**/*.*'],
