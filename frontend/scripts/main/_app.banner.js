@@ -64,7 +64,7 @@ let app = app || {};
         },
 
         init: function() {
-            this.make(2);
+            // this.make(2);
         }
 
     };

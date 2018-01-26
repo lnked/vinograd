@@ -1,1 +1,1 @@
-/Users/edik/web/skeleton/gulpfile.js/bower.js
+/Users/lnked/web/skeleton/gulpfile.js/bower.js

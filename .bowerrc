@@ -1,1 +1,6 @@
-/Users/edik/web/skeleton/.bowerrc
+{
+    "directory": "frontend/vendors/",
+    "save": true,
+    "save-exact": true,
+    "strict-ssl": true
+}
