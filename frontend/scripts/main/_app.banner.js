@@ -3,7 +3,7 @@ let app = app || {};
 ((body => {
     "use strict";
 
-    const banner_id = 'banner-new-year';
+    const banner_id = 'banner-last-rooms';
 
     app.banner = {
 
@@ -64,7 +64,7 @@ let app = app || {};
         },
 
         init: function() {
-            // this.make(2);
+            this.make(2);
         }
 
     };
